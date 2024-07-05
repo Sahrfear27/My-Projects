@@ -18,7 +18,7 @@ Your project must use the following:
 * You must use the latest Angular version features, and avoid using any legacy Angular APIs. 
 * You must use the `ReactiveFormsModule` when working with form elements (data-driven). The `FormsModule` (template-driven) should not be used.
    
-
+###
 export type User = { _id: string, fullname: string, email: string, password: string }
 export type Image = { filename: string, originalname: string }
 export type Review = { review: string, rating: number, by: { user_id: string, fullname: string }, date: number }
