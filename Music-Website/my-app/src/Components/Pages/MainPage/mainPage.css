@@ -1,0 +1,16 @@
+
+.card {
+  background-image: url("./Main.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.table-hover > tbody tr:hover {
+  background-color: rgba(255, 0, 0, 0.2) !important; 
+  color: red !important; /* Text color on hover */
+}
+
+.table-hover tbody tr:hover td a {
+  color: red; /* Ensure links within the row also change color */
+}
