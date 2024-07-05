@@ -1,0 +1,120 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+  }
+  
+
+  .details >h4{
+    font-size: x-large;
+    font-weight: normal;
+
+  }
+  .imageContainer {
+    flex: 0 0 auto;
+    max-width: 200px;
+  }
+  
+  .imageContainer >h3{
+    font-size: x-large;
+    font-weight: lighter;
+  }
+
+  .headerDetails > p > span{
+    font-size:small;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1px;
+    font-weight: lighter;
+  }
+  .headerDetails > p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .imageContainer img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .reviewTitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+  
+  .reviewsGrid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 35px;
+    margin-bottom: 20px;
+
+  }
+.reviewCard {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color:azure;
+    -webkit-box-shadow: 6px 10px 5px 1px rgba(0,0,0,0.21);
+-moz-box-shadow: 6px 10px 5px 1px rgba(0,0,0,0.21);
+box-shadow: 6px 10px 5px 1px rgba(0,0,0,0.21);
+  } 
+  
+   .reviewActions {
+    width: 100%px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+
+
+  } 
+  .detailActions{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .buttonCard {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+
+  }
+  
+  .addReviewButton {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #ddd;
+    border: 3px double #00fffc;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .addReviewButton  :hover{
+    background-color: darkslategray;
+    
+  }
+  .changeStarToYellow {
+    color: #FDA521;
+    font-size:larger;
+  }
+
+.reviewDetails > p > span{
+  font-size: small;
+  letter-spacing: 2px;
+  font-weight: lighter;
+}
+.reviewDetails  {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}

@@ -1,0 +1,80 @@
+
+
+.formcontainer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 50%;
+
+}
+
+
+.formgroup {
+    margin-bottom: 15px;
+}
+
+.formgroup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formgroup input,
+.formgroup select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+span{
+    font-size:xx-small;
+    color: red;
+  }
+
+
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .formcontainer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 50%;
+    background-image:url('../../../Image/bg.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  .formcontainer > h2{
+    text-align: center;
+    font-size: x-large;
+    font-weight: lighter;
+
+  }
+  .formcontainer label{
+    font-size:small;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1px;
+    font-weight: lighter;
+  }
+  
+  .addMedicationButton {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 15px;
+  background-color: #fff;
+    border: 3px double #00fffc;
+    color: black;
+    cursor: pointer;
+  }

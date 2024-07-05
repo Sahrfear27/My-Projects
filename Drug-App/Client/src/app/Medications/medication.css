@@ -1,0 +1,206 @@
+.medCard{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content:flex-end;
+    background-color: black;
+    cursor: pointer;
+}
+
+.medCard > li{
+    color: white;
+    list-style-type: none;
+}
+.medCard >li:hover{
+  color:aqua;
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.formcontainer {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 50%;
+  background-image:url('../../../Image/bg.jpg') ;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.formcontainer > h2{
+  text-align: center;
+  font-size: x-large;
+  font-weight: lighter;
+}
+.formcontainer label{
+  font-size:small;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  font-weight: lighter;
+}
+
+
+.formgroup {
+  margin-bottom: 15px;
+}
+
+.formgroup label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formgroup input,
+.formgroup select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.letterButton {
+  padding: 4px 8px; 
+  font-size: 14px;
+}
+.displayLetterAsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+
+}
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+.navbar ul li {
+  display: inline;
+
+  color: #fff;
+}
+
+.navbar .navLink {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar .navLink:hover {
+  border-radius: 15px;
+  background-color: aliceblue;
+  color: blue;
+}
+
+.medNameCard{
+  margin-top: 40px ;
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.modifyCard{
+
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.detailCard{
+
+  display: flex;
+  padding: 5px;
+}
+
+.mainDetailCard{
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.buttonCard{
+  background-color: blue; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 100%;
+}
+
+
+.imageCard{
+  width: 200px;
+  height: 150px;
+}
+
+
+
+.reviewCard{
+  margin: 5px;
+  padding: 10px;
+}
+
+.reviewSubCard{
+  padding: 8px;
+}
+
+.actionCard{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.addMedicationButton {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 15px;
+background-color: #fff;
+  border: 3px double #00fffc;
+  color: black;
+  cursor: pointer;
+}
+
+.introCard{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-left: 10px;
+}
+
+.subCard{
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+}
+
