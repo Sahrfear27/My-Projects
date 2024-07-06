@@ -1,0 +1,161 @@
+ @FILENAME=myProfile.jpeg
+@FILE_FORM_NAME=myfile
+@FILE_MIME_TYPE=image/jpeg
+@FILE_ID=65f5d65183e928b5fa5633c4
+@user_id_1=65f865d7348f1b3e4471cd38  
+@user_id_2=65f5d65183e928b5fa5633c5  
+@user_id_3=65f8994e7d3ea751f25f6730  
+@user_id_4=65f8ef945a69d65fb5d7fa34 
+@TOKEN_1= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY4NjVkNzM0OGYxYjNlNDQ3MWNkMzgiLCJmdWxsbmFtZSI6eyJmaXJzdCI6IlNhaHJmZWFyIiwibGFzdCI6Ik1hY2FydGh5In0sImVtYWlsIjoic2FocmZlYXJAbWl1LmVkdSIsInBpY3R1cmUiOiJpbWFnZXMvZ3Vlc3QucG5nIiwiaWF0IjoxNzEwNzc3OTA3fQ.y-k-rOMEFoLwuSgFmgMe7IQVFtiljyz_3CIjqIkEY3U
+@TOKEN_2= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY4NjU5NjM0OGYxYjNlNDQ3MWNkMzUiLCJmdWxsbmFtZSI6eyJmaXJzdCI6IkVsZW5pIiwibGFzdCI6IkFyYXlhIn0sImVtYWlsIjoiZWxlbmlAbWl1LmVkdSIsInBpY3R1cmUiOiJpbWFnZXMvZ3Vlc3QucG5nIiwiaWF0IjoxNzEwNzgwMzI1fQ.CpdDX7_oELS-5mJf_UYpeM97eLQtd1_fUY38UAU-gkc
+@TOKEN_3= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY4OTk0ZTdkM2VhNzUxZjI1ZjY3MzAiLCJmdWxsbmFtZSI6eyJmaXJzdCI6IkpvaG4iLCJsYXN0IjoiRG9lIn0sImVtYWlsIjoiam9obkBtaXUuZWR1IiwicGljdHVyZSI6ImltYWdlcy9ndWVzdC5wbmciLCJpYXQiOjE3MTA3OTExNjB9.F06XoamO2Bq0sgLUi66ZekDiKdMSWNK6KsrJsge-En4
+@TOKEN_4= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY4ZWY5NDVhNjlkNjVmYjVkN2ZhMzQiLCJmdWxsbmFtZSI6eyJmaXJzdCI6IlNhaHIiLCJsYXN0IjoiQWxleCJ9LCJlbWFpbCI6InNhaHJAbWl1LmVkdSIsInBpY3R1cmUiOiJpbWFnZXMvZ3Vlc3QucG5nIiwiaWF0IjoxNzEwODEzMjIxfQ.QN90a21KcGTjxp_SlCQ85Fto_0pZL75SnadsHRXKDEI
+###
+
+# Signup
+###
+POST http://localhost:4003/users/signup
+Content-Type: application/json
+
+{
+    "fullname": { "first": "Sahr", "last": "Alex" },
+    "email": "sahr@miu.edu",
+    "password": "Sahr"
+}
+
+# {
+#     "fullname": { "first": "Eleni", "last": "Araya" },
+#     "email": "eleni@miu.edu",
+#     "password": "Eleni"
+# }
+
+#SignIn
+###
+POST http://localhost:4003/users/signin
+Content-Type: application/json
+
+
+{
+    "email": "sahr@miu.edu",
+    "password":"Sahr"
+}
+
+#Upload profile picture
+###
+POST http://localhost:4003/users/{{user_id_4}}/picture
+Authorization: Bearer {{TOKEN_4}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="{{FILE_FORM_NAME}}"; filename="{{FILENAME}}"
+Content-Type: {{FILE_MIME_TYPE}}
+
+
+< ./{{FILENAME}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+#Delete Picture and reset to default
+###
+DELETE  http://localhost:4003/users/{{user_id_3}}/picture
+Authorization: Bearer {{TOKEN_3}}
+
+
+#Deactivate account : If deactivate is added in the query parameter(?action=deactivate_profile), the user will be inactive
+###
+PATCH  http://localhost:4003/users/{{user_id_3}}
+Authorization: Bearer {{TOKEN_3}}
+Content-Type: application/json
+
+{
+    "active":"false"
+}
+
+
+
+# Add Course: By Valid Users
+###
+POST http://localhost:4003/courses
+Authorization:Bearer {{TOKEN_4}}
+Content-Type: application/json
+
+{
+    "title": "WAP1",
+    "description":"Web Application One"
+    
+}
+
+#Get Courses : OWN and All  
+###
+GET http://localhost:4003/courses?page=1&action=own
+Authorization:Bearer {{TOKEN_4}}
+
+
+
+# Get Course By ID: All valid users can have access to courses
+###
+GET http://localhost:4003/courses/65f8f0f15a69d65fb5d7fa3c
+Authorization:Bearer {{TOKEN_2}}
+
+
+
+#Delete Course : If you own it
+###
+DELETE http://localhost:4003/courses/65f8f0f15a69d65fb5d7fa3c
+Authorization:Bearer {{TOKEN_2}}
+
+
+
+#Replace the course by Course_id: If you own it
+###
+PUT  http://localhost:4003/courses/65f89d3f7d3ea751f25f6746
+Authorization:Bearer {{TOKEN_3}}
+Content-Type: application/json
+
+{
+    "title": "WAP2",
+    "description":"Web Application Two"
+    
+}
+
+
+
+# Add Lectures: If you own the course
+###
+POST http://localhost:4003/courses/65f89d3f7d3ea751f25f6746/lectures
+Authorization:Bearer {{TOKEN_3}}
+Content-Type: application/json
+
+{
+   "title": "HTML & CSS",
+    "description": "Learning the Box Model",
+    "url": "https://react.com"
+    
+}
+
+
+#get Lectures: If you own the course
+###
+GET http://localhost:4003/courses/65f89d3f7d3ea751f25f6746/lectures
+Authorization:Bearer {{TOKEN_3}}
+
+
+
+#Replace Lectures:If you own the course
+###
+PUT  http://localhost:4003/courses/65f89d3f7d3ea751f25f6746/lectures/65f8a5c6f3bbf58c6003aa66
+Authorization:Bearer {{TOKEN_3}}
+Content-Type: application/json
+
+{
+   "title": "Design Patterns",
+    "description": "Learning Structural Design pattern",
+    "url": "https://jsInfo.com"
+    
+}
+
+
+#Delete Lecture: If you own the course
+###
+DELETE http://localhost:4003/courses/65f89d3f7d3ea751f25f6746/lectures/65f8ac8a6ff6c5b4bf509b95
+Authorization:Bearer {{TOKEN_3}}
+
