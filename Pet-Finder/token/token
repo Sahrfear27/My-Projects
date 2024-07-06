@@ -1,0 +1,12 @@
+{
+    "access_token": {
+        "aud": "8zTlv7Jg3EKdy6Gnc82U71Geit8mipgI1HhZdSZp9t6GtyBJvq",
+        "jti": "229ae3517765cfc7353184577d232ee65cb185faee6bcfa575b462d43e29a6798fba2443b6b5c737",
+        "iat": 1702862861,
+        "nbf": 1702862861,
+        "exp": 1702866461,
+        "sub": "",
+        "scopes": []
+    },
+    "secretCode": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI4elRsdjdKZzNFS2R5NkduYzgyVTcxR2VpdDhtaXBnSTFIaFpkU1pwOXQ2R3R5Qkp2cSIsImp0aSI6IjIyOWFlMzUxNzc2NWNmYzczNTMxODQ1NzdkMjMyZWU2NWNiMTg1ZmFlZTZiY2ZhNTc1YjQ2MmQ0M2UyOWE2Nzk4ZmJhMjQ0M2I2YjVjNzM3IiwiaWF0IjoxNzAyODYyODYxLCJuYmYiOjE3MDI4NjI4NjEsImV4cCI6MTcwMjg2NjQ2MSwic3ViIjoiIiwic2NvcGVzIjpbXX0.XBwZzFjmvLBJ0vHOrW3CWIxrsXh6vR7t-2gYG2Z7dwqi5mM2VPG-Dpf3yQ4kClHqEtsQdoBWrYbfwthZbgyMsMKXrAECCLkvwMsMZaR6JxGMAhfiMfOKAfztKCk-S5qdX7xGZKKKPZAybCG2DYtMzvfmgqsp-5_dru_g4G5_a8ncFnyvonXJ0ZuelNtVRUUs_laYV-8XwTCpBY_gj2kNHQJQcO2YNO7zSBk033fxtcqB-uY4WvhdKVdCdU0d_64_OI1tp4HaR5GfjgzschQivzCmF7zg9oZQc6_g_ncgZZI19U4E6dWDGHSUpFJDm0SmYvXzXOkxGC-1cmlKbvGy7A"
+}
