@@ -36,3 +36,6 @@
     transform: rotate(360deg);
   }
 }
+.navBarCard{
+  margin-top:0;
+}

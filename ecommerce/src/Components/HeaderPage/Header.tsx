@@ -1,16 +1,17 @@
 import React from "react";
-// import "./Header.css";
+import "./header.css";
+import file from "../../Images/file.png";
 export default function Header() {
   return (
     <div className="top-header" id="top-header">
       <div className="container text-center">
         <div className="row">
           <div className="col-md-12">
-            <img src="img/profile-pic.jpg" alt="Anamul Hasan" />
+            <img src={file} alt="Anamul Hasan" />
           </div>
 
           <div className="col-md-12">
-            <h1>I'm Poppy Jackson</h1>
+            <h1>I'm Sahrfear</h1>
           </div>
 
           <div className="col-md-12">

@@ -17,10 +17,9 @@
     height: 100%;
     left: 0;
     top: 0;
-    background: url(../img/top-header.jpg) left top repeat;
+    /* background: url(../../../assets/background.jpg) left top repeat; */
+    background: url(../../../assets/background.jpg) no-repeat center center;
     background-size: cover;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
     z-index: -1;
 }
 
