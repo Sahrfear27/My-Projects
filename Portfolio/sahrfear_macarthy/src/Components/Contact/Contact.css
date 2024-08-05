@@ -1,3 +1,146 @@
 .contact{
     padding-top: 80px;
 }
+
+.contact {
+    background-color: #f8f9fa; 
+    padding: 4rem 0; 
+  }
+  
+ .callMe{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding: 5px;
+    color: white;
+ }
+
+ h3{
+    font-size:large;
+ }
+
+
+ /* Media Queries */
+@media (max-width: 1200px) {
+    .callMe {
+      flex-direction: column;
+    }
+  }
+  
+   @media (max-width: 992px) {
+    .contact-card {
+      padding: 1.5rem;
+    }
+  
+    .title-header {
+      font-size: 1.75rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .title-header {
+      font-size: 1.5rem;
+    }
+  }   
+
+
+
+/* Contact Me Session */
+.contact-card {
+  margin-top: 4rem;
+}
+.contact-sec {
+  padding: 60px 0;
+  background-image: url("../../Images/contact.bg.jpg");
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+}
+
+.contact-card {
+  background: rgba(52, 61, 70, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.title-card {
+  margin-bottom: 30px;
+}
+
+.title-header {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff; 
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #273A46;
+  color: white;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #273A46;
+  color: white;
+}
+
+.btn {
+  padding: 10px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .contact-sec {
+    padding: 30px 0;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+
+  .title-header {
+    font-size: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+.location ,.phone, .email{
+font-size:small;
+margin-left: 10px;
+}
+.locLink, .phoLink, .emailLink {
+  font-size: 30px; /* Size of the icons */
+  color: #385886; /* Base color for the icons */
+ filter:brightness(1.5)
+}
+
+.locLink:hover, .phoLink:hover, .emailLink:hover{
+  color: green;
+  filter: brightness(1.5);
+}

@@ -6,8 +6,12 @@ import "./Header.css";
 import logo from "../../Images/hero.png";
 
 export default function Header() {
+  const linkStyle = {
+    textDecoration: "none",
+  };
+
   return (
-    <Navbar bg="dark" variant="dark" expand="sm" className="header" fixed="top">
+    <Navbar variant="dark" expand="sm" className="header" fixed="top">
       <Container>
         <Navbar.Brand>
           <img
@@ -23,32 +27,17 @@ export default function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link>
-              <Link
-                to="hero"
-                smooth={true}
-                duration={500}
-                className="text-white"
-              >
-                Hero
+              <Link to="hero" smooth={true} duration={500} style={linkStyle}>
+                Home
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link
-                to="about"
-                smooth={true}
-                duration={500}
-                className="text-white"
-              >
+              <Link to="about" smooth={true} duration={500} style={linkStyle}>
                 About
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link
-                to="service"
-                smooth={true}
-                duration={500}
-                className="text-white"
-              >
+              <Link to="service" smooth={true} duration={500} style={linkStyle}>
                 Service
               </Link>
             </Nav.Link>
@@ -57,7 +46,7 @@ export default function Header() {
                 to="projects"
                 smooth={true}
                 duration={500}
-                className="text-white"
+                style={linkStyle}
               >
                 Projects
               </Link>
@@ -67,7 +56,7 @@ export default function Header() {
                 to="education"
                 smooth={true}
                 duration={500}
-                className="text-white"
+                style={linkStyle}
               >
                 Education
               </Link>
@@ -77,31 +66,21 @@ export default function Header() {
                 to="testimonies"
                 smooth={true}
                 duration={500}
-                className="text-white"
+                style={linkStyle}
               >
                 Testimonies
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                className="text-white"
-              >
+              <Link to="contact" smooth={true} duration={500} style={linkStyle}>
                 Contact
               </Link>
             </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="footer"
-                smooth={true}
-                duration={500}
-                className="text-white"
-              >
+            {/* <Nav.Link>
+              <Link to="footer" smooth={true} duration={500} style={linkStyle}>
                 Footer
               </Link>
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

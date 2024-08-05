@@ -1,3 +1,44 @@
+
 .hero{
     padding-top: 80px;
 }
+.top-header{
+    font-size: 2rem;
+    font-weight:700;
+    color:white;
+    font-family: 'Solway', serif;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    /* .about-me h5 {
+      font-size: 2rem; 
+    } */
+}
+  
+.fs-5 {
+  font-size: 3rem; /* Adjust as needed */
+  font-weight: 600; /* Optional: Adjust font weight if needed */
+}
+
+.js-developer {
+    color: #f39c12; /* Orange */
+    font-weight:lighter;
+    font-family: monospace;
+    /* font-size: 2rem; */
+  }
+  
+  .fullstack-developer {
+    color: #27ae60; /* Green */
+    font-style: italic;
+    font-weight:lighter;
+    font-family: monospace;
+    /* font-size: 2rem; */
+  }
+  
+  .mobile-app-developer {
+    color: #e74c3c; /* Red */
+    font-weight:lighter;
+    font-family: monospace;
+
+  }
+
+

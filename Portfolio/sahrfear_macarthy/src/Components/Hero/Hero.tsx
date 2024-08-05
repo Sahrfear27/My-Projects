@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Hero.css";
@@ -47,18 +47,18 @@ export default function Hero(props: Props) {
     <section id={id} className="hero bg-image vh-100 d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0">
-            <h1 className="mb-4">I am Sahrfear Macarthy</h1>
+          <div className="col-12 col-md-8 text-center text-md-start mb-4 mb-md-0">
+            <h2 className="top-header">I am Sahrfear Macarthy</h2>
             <div className="fs-5 fw-bold">
               <span ref={el} />
             </div>
           </div>
-          <div className="col-12 col-md-6 text-center text-md-end">
+          <div className="col-12 col-md-4 text-center text-md-end">
             <img
               src={file}
               alt="Hero"
               className="img-fluid"
-              style={{ maxWidth: "300px", height: "auto" }}
+              style={{ maxWidth: "300px", height: "300px" }}
             />
           </div>
         </div>
