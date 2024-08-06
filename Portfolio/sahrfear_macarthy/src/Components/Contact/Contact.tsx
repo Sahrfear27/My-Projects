@@ -21,26 +21,27 @@ export default function Contact(props: Props) {
 
                 <div className="callMe">
                   <div>
-                    <div>
-                      <h3>Address</h3>
-
-                      <p>
-                        <a href="" className="locLink">
-                          {" "}
-                          <IoLocationOutline />
-                        </a>
-                        <span className="location">
-                          4083 San Ramon Way, San Jose, CA
-                        </span>
-                      </p>
-                    </div>
+                    <h3>Address</h3>
+                    <p>
+                      <a
+                        href="http://maps.google.com/?q=4083+San+Ramon+Way,+San+Jose,+CA"
+                        className="locLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <IoLocationOutline />
+                      </a>
+                      <span className="location">
+                        4083 San Ramon Way, San Jose, CA
+                      </span>
+                    </p>
                   </div>
 
                   <div>
                     <div>
                       <h3>Phone</h3>
                       <p>
-                        <a href="" className="phoLink">
+                        <a href="tel: +16697997164" className="phoLink">
                           <FiPhone />
                         </a>
                         <span className="phone">+1(669) 799-7164</span>
@@ -49,18 +50,16 @@ export default function Contact(props: Props) {
                   </div>
 
                   <div>
-                    <div>
-                      <h3>Email</h3>
-
-                      <p>
-                        <a href="" className="emailLink">
-                          <MdOutlineMailOutline />
-                        </a>
-                        <span className="email">
-                          sahrfearmacarthy@gmail.com
-                        </span>
-                      </p>
-                    </div>
+                    <h3>Email</h3>
+                    <p>
+                      <a
+                        href="mailto:sahrfearmacarthy@gmail.com"
+                        className="emailLink"
+                      >
+                        <MdOutlineMailOutline />
+                      </a>
+                      <span className="email">sahrfearmacarthy@gmail.com</span>
+                    </p>
                   </div>
                 </div>
                 <div>

@@ -8,6 +8,7 @@ import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import Hero from "./Components/Hero/Hero";
 import "./App.css";
+// import Test from "./Components/Test";
 export default function App() {
   return (
     <div>

@@ -47,8 +47,8 @@ export default function Hero(props: Props) {
     <section id={id} className="hero bg-image vh-100 d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-12 col-md-8 text-center text-md-start mb-4 mb-md-0">
-            <h2 className="top-header">I am Sahrfear Macarthy</h2>
+          <div className="col-12 col-md-8 text-center text-md-start  mb-md-0">
+            <h2 className="top-header">I'm Sahrfear</h2>
             <div className="fs-5 fw-bold">
               <span ref={el} />
             </div>
