@@ -1,8 +1,30 @@
-/* Header.css */
-.header{
-    /* background-color: #395886; */
-    background-color: #061F31;
+
+.nav-link-wrapper {
+    display: inline-block;
+    margin: 0 10px;
+    color: var(--text-color);
+  }
+
+
+  .nav-link-wrapper a {
+    color: var(--nav-link-color);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+
+.page-container {
+  background-color: var(--bg-header);
 }
 
+.page-container p {
+  color: var(--text-color);
+}
 
-  
+.page-container[data-lightmode="true"] {
+  background-color: #B1C9EF;
+}
+
+.page-container[data-lightmode="true"] p {
+  color: black; 
+}

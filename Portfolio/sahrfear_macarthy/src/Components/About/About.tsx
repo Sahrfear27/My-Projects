@@ -27,14 +27,18 @@ export default function About(props: Props) {
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-lg-4 about-me">
-            <p>
+            <div>
               <h5 style={{ textAlign: "center" }}>About Me</h5>
-              My development journey began with a passion for problem-solving
-              and coding. I've mastered front-end and back-end technologies,
-              embracing the challenges of creating seamless solutions. I excel
-              in building robust, scalable web applications that provide
-              exceptional user experiences.
-            </p>
+              <p>
+                {" "}
+                My development journey began with a passion for problem-solving
+                and coding. I've mastered front-end and back-end technologies,
+                embracing the challenges of creating seamless solutions. I excel
+                in building robust, scalable web applications that provide
+                exceptional user experiences.
+              </p>
+            </div>
+
             <div className="resume">
               <a
                 href="assets/Sahrfear_Macarthy_resume.pdf"

@@ -44,7 +44,7 @@ export default function Hero(props: Props) {
   }, []);
 
   return (
-    <section id={id} className="hero bg-image vh-100 d-flex align-items-center">
+    <section id={id} className="hero vh-100 d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-12 col-md-8 text-center text-md-start  mb-md-0">

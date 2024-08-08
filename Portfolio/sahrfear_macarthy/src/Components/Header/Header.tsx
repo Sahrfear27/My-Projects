@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { MdDarkMode } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-scroll";
 import "./Header.css";
 import logo from "../../Images/hero.png";
+import TheameContex from "../Theame/Theame";
 
 export default function Header() {
+  const { lightMode, setLightMode } = useContext(TheameContex);
   const linkStyle = {
     textDecoration: "none",
+    color: "inherit", // Ensure color is inherited from parent
   };
 
   return (
-    <Navbar variant="dark" expand="sm" className="header" fixed="top">
+    <Navbar
+      expand="sm"
+      className="page-container"
+      fixed="top"
+      data-lightmode={lightMode ? "true" : "false"}
+    >
       <Container>
         <Navbar.Brand>
           <img
@@ -26,22 +36,22 @@ export default function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link>
+            <div className="nav-link-wrapper">
               <Link to="hero" smooth={true} duration={500} style={linkStyle}>
                 Home
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </div>
+            <div className="nav-link-wrapper">
               <Link to="about" smooth={true} duration={500} style={linkStyle}>
                 About
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </div>
+            <div className="nav-link-wrapper">
               <Link to="service" smooth={true} duration={500} style={linkStyle}>
                 Service
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </div>
+            <div className="nav-link-wrapper">
               <Link
                 to="projects"
                 smooth={true}
@@ -50,8 +60,8 @@ export default function Header() {
               >
                 Projects
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </div>
+            <div className="nav-link-wrapper">
               <Link
                 to="education"
                 smooth={true}
@@ -60,8 +70,8 @@ export default function Header() {
               >
                 Education
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </div>
+            <div className="nav-link-wrapper">
               <Link
                 to="testimonies"
                 smooth={true}
@@ -70,17 +80,18 @@ export default function Header() {
               >
                 Testimonies
               </Link>
-            </Nav.Link>
-            <Nav.Link>
+            </div>
+            <div className="nav-link-wrapper">
               <Link to="contact" smooth={true} duration={500} style={linkStyle}>
                 Contact
               </Link>
-            </Nav.Link>
-            {/* <Nav.Link>
-              <Link to="footer" smooth={true} duration={500} style={linkStyle}>
-                Footer
-              </Link>
-            </Nav.Link> */}
+            </div>
+            <div
+              className="nav-link-wrapper"
+              onClick={() => setLightMode(!lightMode)}
+            >
+              {lightMode ? <MdLightMode /> : <MdDarkMode />}
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

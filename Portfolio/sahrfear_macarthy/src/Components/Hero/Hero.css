@@ -1,17 +1,15 @@
 
 .hero{
     padding-top: 80px;
+    background-color: var(--bg-color);
 }
 .top-header{
     font-size: 4rem;
     font-weight:700;
-    color:white;
+    color:var(--h2-color);
     font-family: 'Solway', serif;
     margin-bottom: 1rem;
     letter-spacing: 1px;
-    /* .about-me h5 {
-      font-size: 2rem; 
-    } */
 }
   
 .fs-5 {

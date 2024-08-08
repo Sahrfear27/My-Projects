@@ -1,6 +1,8 @@
 
    .about {
     padding-top: 88px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
   }
  
   .resume a {
@@ -22,13 +24,14 @@
     background-color: #0056b3;
   }
  h5 {
-    font-size: 1.5rem;
+    font-size: var(--h5-font);
     font-weight: 700;
     color: #A6BBCC;
   } 
-  .about-me >p{
-    font-family: monospace;
-    font-size: 1rem;
+  .about-me > div>p{
+    font-family: var(--p--font-family);
+    font-size: var(--p-font);
+    
   }
 .tech-item {
 text-align: center;
@@ -163,186 +166,3 @@ text-align: center;
 
 
 
-
-
-/* 
-  .about {
-    padding-top: 83px;
-  }
-  
-  .about_hero, .tech {
-    text-align: center;
-    color: white;
-  }
-  
-  .tech {
-    margin-top: 50px;
-  }
-  
-  .main-card {
-    display: flex;
-    flex-direction: column;
-    border:4px solid #00fffc;
-    padding: 1rem;
-    border-radius: 8px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .about_hero h5 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #A6BBCC;
-  }
-  
-  .hero {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .tech h5 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #A6BBCC;
-  }
-  
-  .tech-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem; 
-    justify-content: center; 
-  }
-  
-  .tech-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    width: 100%;
-    max-width: 150px;
-    text-align: center;
-  }
-  
-  .tech-item p {
-    margin: 0.5rem 0 0; 
-  }
-  
-  .html-icon {
-    font-size: 3rem;
-    color: #f39c12;
-  }
-  
-  .css-icon {
-    font-size: 3rem;
-    color: #2862E9;
-  }
-  
-  .boot-icon {
-    font-size: 3rem;
-    color: #7210EC;
-  }
-  
-  .javaScript-icon {
-    font-size: 3rem;
-    color: #F7DF38;
-  }
-  
-  .typeScript-icon {
-    font-size: 3rem;
-    color: #0B7CD0;
-  }
-  
-  .node-icon {
-    font-size: 3rem;
-    color: #7BB26A;
-  }
-  
-  .express-icon {
-    font-size: 3rem;
-    color: #00B7A0;
-  }
-  
-  .mongodb-icon {
-    font-size: 3rem;
-    color: #1EEE69;
-  }
-  
-  .sql-icon {
-    font-size: 3rem;
-    color: #3A6C94;
-  }
-  
-  .react-icon {
-    font-size: 3rem;
-    color: #54BFD6;
-  }
-  
-  .react-native-icon {
-    font-size: 3rem;
-    color: #71D6EC;
-  }
-  
-  .angular-icon {
-    font-size: 3rem;
-    color: #D95FFF;
-  }
-  
-  .git-icon {
-    font-size: 3rem;
-   color: white;
-  }
-  
-  .tail-icon {
-    font-size: 3rem;
-    color: #38BDF9;
-  }
-  
-
-  @media (max-width: 1200px) {
-    .tech-item {
-      max-width: 130px;
-    }
-  }
-  
-  @media (max-width: 992px) {
-    .tech-item {
-      max-width: 120px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .tech-item {
-      max-width: 100px;
-    }
-  
-    .html-icon, .css-icon, .boot-icon,
-    .javaScript-icon, .typeScript-icon,
-    .node-icon, .express-icon,
-    .mongodb-icon, .sql-icon,
-    .react-icon, .react-native-icon,
-    .angular-icon, .git-icon, .tail-icon {
-      font-size: 2rem;
-    }
-    .about_hero h5, .tech h5{
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .tech-item {
-      max-width: 90px;
-    }
-  
-    .html-icon, .css-icon, .boot-icon,
-    .javaScript-icon, .typeScript-icon,
-    .node-icon, .express-icon,
-    .mongodb-icon, .sql-icon,
-    .react-icon, .react-native-icon,
-    .angular-icon, .git-icon, .tail-icon {
-      font-size: 1.5rem;
-    }
-    .about_hero h5, .tech h5{
-      font-size: 0.5rem;
-    }
-  } */
-  

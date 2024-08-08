@@ -13,22 +13,39 @@
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
-    margin-top: 60px;
+    transition: background-color 0.3s, color 0.3s;
     color: var(--text-color);
     overflow-x: hidden;
   }
   
   :root {
-    /* --bg-color: #283946; */
-    --bg-color: #273A46;
-    /* --bg-color: #F0F3FA; */
-    --main-color: #a6bbcc;
-
+ 
+    --bg-color: #273A46; 
     --text-color: #F0F3FA;
     --h1-font: 5.6rem;
     --h2-font: 3.7rem sub;
-
+    --h2-color: #B1C9EF;
+    --h5-font: 1.5rem;
     --p-font: 1rem;
+    --bg-header: #032030;
+    --p--font-family:monospace;
+    /* --nav-link-color: red; */
+  }
+
+  
+
+  .light-mode {
+    --bg-color: #D5DEEF;
+    --text-color: #000000;
+    --bg-header: #B1C9EF;
+    
+  }
+  
+  .dark-mode {
+    --bg-color: var(--bg-color);
+    --text-color: var(--text-color);
+    /* --header-bg: var(--header-bg); */
+    /* --bg-header: var(--bg-header); */
   }
   
   
