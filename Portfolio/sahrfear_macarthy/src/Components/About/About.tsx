@@ -24,7 +24,7 @@ export default function About(props: Props) {
   const { id } = props;
   return (
     <section id={id} className="vh-100 about">
-      <div className="container">
+      <div className="container" data-aos="zoom-in">
         <div className="row">
           <div className="col-md-12 col-lg-4 about-me">
             <div>
