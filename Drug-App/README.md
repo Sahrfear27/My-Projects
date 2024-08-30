@@ -14,8 +14,8 @@ Update/Delete Medications: Medication owners can edit or remove their medication
 Submit Reviews: Logged-in users can submit reviews for medications.
 Update/Delete Reviews: Only the owner of a review can edit or delete their review.
 
-## Application Specifications and Requirements
-# Login-Based System: The application uses JWT for user authentication. Browsing medications and reading reviews are accessible to guests, while adding, updating, and deleting are restricted to logged-in users.
+# Application Specifications and Requirements
+Login-Based System: The application uses JWT for user authentication. Browsing medications and reading reviews are accessible to guests, while adding, updating, and deleting are restricted to logged-in users.
 
 1. State Management: All component and service state properties are declared as a signal.
 
