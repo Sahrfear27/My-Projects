@@ -1,37 +1,34 @@
-# Build React Native App to manage a library.
-## Assume that you are using `json-server` with the following `db.json`. Please refer to the directory `server` for details
-## Please implement the React Native application that has the following features
-1. CRUD Authors
-* Create Author: A form to input author details. Ensure no duplicate authors by checking existing records before submission.
-* Read Authors: Display a list of all authors. A detail view may be useful for more information.
-* Update Author: Allow editing author details through a form, possibly accessed by tapping on an author in the list.
-* Delete Author: Provide a method to remove an author, with a confirmation prompt.
-2. CRUD Publishers
-* Similar to CRUD for authors
-3. CRUD Books
-* Create Book: A form to add a book including title, genre, category, and selecting authors and publishers from dropdown lists populated with existing entries.
-* Read Books: A list or grid view of books with options to filter by various attributes.
-* Update Book: Allow modifications to book details via a detailed edit page.
-* Delete Book: Enable book removal with confirmation.
-4. CRUD Members
-* Similar to CRUD operations described above, but include validation to ensure unique ID for each member.
-5. Search Book by Title
-* Implement a search bar that filters the list of books as the user types, based on the book title.
-6. Borrow a Book
-* Display a list of books and a list of members. The user selects a book and a member, then confirms the borrowing transaction. Decrease the availableCopies by 1 for the selected book. Prevent borrowing if no copies are available.
-7. Return a Book
-* Similar to borrowing, but increase the availableCopies by 1 when a book is returned.
-8. Develop a Login screen where users can sign in with their email addresses. If the email exists in the database, grant the users access to the library. If not, display a Wrong email message. Implement a feature that keeps users logged in even when they reopen the app. Also, include a function to log out.
+# Server Setup
+## The app uses json-server to simulate a backend API. The server configuration and db.json file are located in the server directory. This serves as the data source for the application's CRUD operations.
 
-## Technical requirements:
-1. Utilize react-navigation to structure your application.
-2. Use context to share your data if needed
-3. Use this component for picking a option in a list: https://docs.expo.dev/versions/latest/sdk/picker/.
-4. Leverage CSS with Flex box to ensure responsive and aesthetically pleasing layout throughout the application
-5. Provide error handlers or validation if needed.
-
-## Project Requirement
-1. It is an individual project; therefore your code should be solely your own.
-2. Each person will have 15 minutes to show off your project with me. You only need to run your application and answer my question. You do not need to make any document like PowerPoint. I will send out the specific time later.
-3. Submit the final and stable version to Github by 10:00 PM the day before the presentation day.
-4. If you have any question, please send me messages on Teams. I will connect with you ASAP from 10:00 AM - 12:00 PM or 1:30 PM - 3:00 PM.
+# Features
+1. Author Management (CRUD)
+Create Author: A form for adding new authors. The app checks for duplicate entries to ensure no duplicate authors are created.
+Read Authors: A list view displaying all authors. Users can tap on an author to view more details.
+Update Author: Edit author details through a form, accessible by selecting an author from the list.
+Delete Author: Authors can be removed with a confirmation prompt to prevent accidental deletion.
+2. Publisher Management (CRUD)
+Create Publisher: Add new publishers using a form. Similar validation checks as authors.
+Read Publishers: View a list of all publishers, with additional detail views available.
+Update Publisher: Edit publisher details, accessible from the list view.
+Delete Publisher: Remove publishers with confirmation.
+3. Book Management (CRUD)
+Create Book: Add books with details like title, genre, and category. Authors and publishers are selected from dropdown lists populated with existing entries.
+Read Books: Display books in a list or grid view with filtering options based on various attributes.
+Update Book: Modify book details through an edit page.
+Delete Book: Books can be removed with a confirmation prompt.
+4. Member Management (CRUD)
+Create Member: Add new members, ensuring each member has a unique ID.
+Read Members: View all members in a list with options to view more details.
+Update Member: Edit member details through an accessible form.
+Delete Member: Members can be deleted with a confirmation prompt.
+5. Book Search
+Search by Title: A search bar filters the list of books based on the title as the user types.
+6. Book Borrowing
+Borrow a Book: Users can select a book and a member to borrow a book. The app decreases the available copies by 1 and prevents borrowing if no copies are available.
+7. Book Return
+Return a Book: Similar to borrowing, but increases the available copies by 1 when a book is returned.
+8. User Authentication
+Login: Users sign in with their email addresses. If the email exists in the database, access is granted; otherwise, a "Wrong email" message is displayed.
+Persistent Login: Users remain logged in even when reopening the app.
+Logout: Users can log out of the app.
