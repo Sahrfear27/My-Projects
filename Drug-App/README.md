@@ -1,5 +1,5 @@
 ## Medication Reviews/Side-Effects Application
-# This project is a web application designed to help users review and report medication side effects. It features guest browsing, user authentication, and role-based permissions for managing medications and reviews.
+This project is a web application designed to help users review and report medication side effects. It features guest browsing, user authentication, and role-based permissions for managing medications and reviews.
 
 # Features
 1. Guest Browsing
