@@ -1,0 +1,8 @@
+POST http://localhost:4007/users/signup
+Content-Type: application/json
+
+{
+    "fullname": "Asaad Saad",
+    "email": "daddy@miu.edu",
+    "password": "123456"
+}

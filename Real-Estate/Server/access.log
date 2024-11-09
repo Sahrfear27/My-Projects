@@ -1,0 +1,6 @@
+::ffff:127.0.0.1 - - [08/Nov/2024:19:56:13 +0000] "POST /users/signup HTTP/1.1" 200 188 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [09/Nov/2024:05:48:49 +0000] "POST /users/signup HTTP/1.1" 200 200 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [09/Nov/2024:20:13:02 +0000] "GET /users/signup HTTP/1.1" 404 15 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [09/Nov/2024:20:14:41 +0000] "GET /users/signup HTTP/1.1" 404 15 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [09/Nov/2024:20:14:43 +0000] "GET /users/signup HTTP/1.1" 404 15 "-" "Thunder Client (https://www.thunderclient.com)"
+::ffff:127.0.0.1 - - [09/Nov/2024:20:15:59 +0000] "POST /users/signup HTTP/1.1" 200 207 "-" "Thunder Client (https://www.thunderclient.com)"
