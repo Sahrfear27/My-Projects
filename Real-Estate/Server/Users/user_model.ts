@@ -3,6 +3,7 @@ import { InferSchemaType, Schema, model } from "mongoose";
 // Create user model
 const UserSchema = new Schema({
   fullname: { type: String, required: true }, // Corrected 'require' to 'required'
+
   email: { type: String, required: true }, // Corrected 'require' to 'required'
   password: { type: String, required: true }, // Corrected 'require' to 'required'
 });
