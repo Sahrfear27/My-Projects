@@ -1,8 +1,50 @@
+# @name login
+# Sign Up
 POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Asaad Saad",
-    "email": "daddy@miu.edu",
-    "password": "123456"
+    "fullname": "Olivia Diallo",
+    "email": "olivia@gmail.edu",
+    "password": "olivia"
 }
+
+# Sign In
+###
+POST http://localhost:4007/users/signin
+Content-Type: application/json
+
+{
+   "email": "sahrfear@gmail.edu",
+    "password": "sahrfear"
+}
+
+###
+# Post a profile Picture assets/myProfile.jpeg
+@FILENAME =assets/myProfile.jpeg
+@FILE_FORM_NAME=userfile
+@FILE_MIME_TYPE=assets/jpeg
+@user_id =674aad51b911500cda860b01
+
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRhYWQ1MWI5MTE1MDBjZGE4NjBiMDEiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5lZHUiLCJpYXQiOjE3MzI5NDc1NzZ9.QQ6HQrxQmzCl0hDwh3IEODMBhcFZnaaFgA6FKQuPxB4
+
+
+###
+POST http://localhost:4007/users/{{user_id}}/add_profile
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer {{authToken}}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="{{FILE_FORM_NAME}}"; filename="{{FILENAME}}"
+Content-Type: {{FILE_MIME_TYPE}}
+
+
+< ./{{FILENAME}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+
+###
+#Remove profile picture
+DELETE http://localhost:4007/users/{{user_id}}/remove_profile
+Authorization: Bearer {{authToken}}

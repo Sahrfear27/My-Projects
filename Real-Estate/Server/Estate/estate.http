@@ -1,0 +1,74 @@
+@FILENAME =assets/estate.jpg
+@FILE_FORM_NAME=estatefile
+@FILE_MIME_TYPE=assets/jpg
+
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRhYWQ1MWI5MTE1MDBjZGE4NjBiMDEiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5lZHUiLCJpYXQiOjE3MzI5NDc4MDR9.ASI34bnBcZI8_ud0lJeUYb59CT1VizcvFsfw4oPt0C0
+
+
+# Sign In to Get the Token
+POST http://localhost:4007/users/signin
+Content-Type: application/json
+
+{
+    "email": "sahrfear@gmail.edu",
+    "password": "sahrfear"
+}
+###
+
+# Add a New Apartment
+POST http://localhost:4007/apartment/add_apartment
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer {{authToken}}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="name"
+
+Luxury Apartment
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+A beautiful luxury apartment in the heart of the city.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="location[address]"
+
+3050 Buckeye Drive
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="location[city]"
+
+San Jose
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="location[state]"
+
+CA
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="location[postalCode]"
+
+95112
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price"
+
+3500
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="propertyType"
+
+apartment
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="features[bedrooms]"
+
+3
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="features[bathrooms]"
+
+2
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="features[area]"
+
+1500
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="estatefile"; filename="estate.jpg"
+Content-Type: {{FILE_MIME_TYPE}}
+
+< ./{{FILENAME}}
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+

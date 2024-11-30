@@ -7,6 +7,9 @@ import helmet from "helmet";
 import { connect_db } from "./database_connect";
 import user_Route from "./Users/user_routes";
 import { ErrorWithStatus } from "./Helper/errorhandler";
+import estate_route from "./Estate/estate_routes";
+import { verify_token } from "./Helper/verify_token";
+
 // Init
 const app = express();
 connect_db();
@@ -29,7 +32,9 @@ app.use(cors());
 
 // Routes
 app.use("/users", user_Route);
+app.use("/apartment", verify_token, estate_route);
 
+// Catch all unhandled requests
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   next(new ErrorWithStatus("Route Not Found", 404));
 });

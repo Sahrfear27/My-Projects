@@ -32,7 +32,7 @@ export const sign_up: RequestHandler<
       console.log("user cannot be created");
     } else {
       res.json({ success: true, data: userCreated });
-      console.log("user has been created to the database");
+      console.log("User has been created to the database");
     }
   } catch (error) {
     next(error);
@@ -71,7 +71,7 @@ export const sign_in: RequestHandler<
     res.json({ success: true, data: jwt });
 
     console.log("Login Was Successful");
-    console.log(jwt);
+    // console.log(jwt);
   } catch (error) {
     console.log(error);
     next(error);
