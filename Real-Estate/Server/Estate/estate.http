@@ -1,8 +1,11 @@
-@FILENAME =assets/estate.jpg
+@FILENAME1 =assets/estate.jpg
+@FILENAME2 =assets/estate2.jpg
+@FILENAME3 =assets/estate3.jpg
+
 @FILE_FORM_NAME=estatefile
 @FILE_MIME_TYPE=assets/jpg
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRhYWQ1MWI5MTE1MDBjZGE4NjBiMDEiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5lZHUiLCJpYXQiOjE3MzI5NDc4MDR9.ASI34bnBcZI8_ud0lJeUYb59CT1VizcvFsfw4oPt0C0
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRkM2Y1OTExOWI1MjExOTgxNmMyOTgiLCJmdWxsbmFtZSI6Ikt1bWJhIE1hY2FydGh5IiwiZW1haWwiOiJrdW1iYUBnbWFpbC5jb20iLCJpYXQiOjE3MzMxMTU5OTl9.yojIWcow2Qs86ywvx-su1e6wyX0Fu7hF7Lc1dx-VCXw
 
 
 # Sign In to Get the Token
@@ -10,8 +13,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "sahrfear@gmail.edu",
-    "password": "sahrfear"
+     "email": "kumba@gmail.com",
+    "password": "kumba"
 }
 ###
 
@@ -23,15 +26,15 @@ Authorization: Bearer {{authToken}}
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Luxury Apartment
+Architectural style
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
-A beautiful luxury apartment in the heart of the city.
+A beautiful luxury apartment in the heart of the city San Jose.
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[address]"
 
-3050 Buckeye Drive
+3050 San Ramon Way 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[city]"
 
@@ -45,6 +48,14 @@ Content-Disposition: form-data; name="location[postalCode]"
 
 95112
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="location[coordinates][lat]"
+
+37.3382
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="location[coordinates][lng]"
+
+-121.8863
+------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="price"
 
 3500
@@ -55,20 +66,34 @@ apartment
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bedrooms]"
 
-3
+6
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bathrooms]"
 
-2
+3
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[area]"
 
-1500
+1899
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="estatefile"; filename="estate.jpg"
-Content-Type: {{FILE_MIME_TYPE}}
+Content-Type: image/jpeg
 
-< ./{{FILENAME}}
+< ./estate.jpg>
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="estatefile"; filename="estate2.jpg"
+Content-Type: image/jpeg
+
+< ./estate2.jpg>
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="estatefile"; filename="estate3.jpg"
+Content-Type: image/jpeg
+
+< ./estate3.jpg>
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 
+# Get apartment by id
+###
+GET  http://localhost:4007/apartment/674d219d21cbddc0c5adb5e3
+Authorization:Bearer {{authToken}}

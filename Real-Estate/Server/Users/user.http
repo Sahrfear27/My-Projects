@@ -4,9 +4,9 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Olivia Diallo",
-    "email": "olivia@gmail.edu",
-    "password": "olivia"
+    "fullname": "Kumba Macarthy",
+    "email": "kumba@gmail.com",
+    "password": "kumba"
 }
 
 # Sign In
@@ -15,18 +15,18 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-   "email": "sahrfear@gmail.edu",
-    "password": "sahrfear"
+   "email": "kumba@gmail.com",
+    "password": "kumba"
 }
 
 ###
 # Post a profile Picture assets/myProfile.jpeg
-@FILENAME =assets/myProfile.jpeg
+@FILENAME =assets/myProfile.jpg
 @FILE_FORM_NAME=userfile
-@FILE_MIME_TYPE=assets/jpeg
-@user_id =674aad51b911500cda860b01
+@FILE_MIME_TYPE=assets/jpg
+@user_id =674d3f59119b52119816c298
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRhYWQ1MWI5MTE1MDBjZGE4NjBiMDEiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5lZHUiLCJpYXQiOjE3MzI5NDc1NzZ9.QQ6HQrxQmzCl0hDwh3IEODMBhcFZnaaFgA6FKQuPxB4
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRkM2Y1OTExOWI1MjExOTgxNmMyOTgiLCJmdWxsbmFtZSI6Ikt1bWJhIE1hY2FydGh5IiwiZW1haWwiOiJrdW1iYUBnbWFpbC5jb20iLCJpYXQiOjE3MzMxMTU3NTB9.uCCUOxWRWkDf5eeWDmEMoy1kDItQcoha6lc7t8UrqlQ
 
 
 ###
