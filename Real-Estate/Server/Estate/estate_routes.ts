@@ -1,5 +1,14 @@
 import express from "express";
-import { add_apartment, get_apartmentby_id } from "./estate_controller";
+import {
+  add,
+  apartments,
+  commercials,
+  delete_propertyby_id,
+  get_propertyby_id,
+  houses,
+  update_propertyby_id,
+  Villas,
+} from "./estate_controller";
 import multer from "multer";
 import { verify_token } from "../Helper/verify_token";
 
@@ -8,12 +17,21 @@ const estate_route = express.Router();
 // Set the upload destination and the max number of files allowed
 const upload = multer({ dest: "EstateImages/", limits: { files: 5 } });
 
-estate_route.post(
-  "/add_apartment",
+estate_route.post("/add", verify_token, upload.array("estatefile", 5), add);
+// estate_route.post("/add", uploadFiles, add);
+
+estate_route.put(
+  "/:property_id",
   verify_token,
   upload.array("estatefile", 5),
-  add_apartment
+  update_propertyby_id
 );
+estate_route.delete("/:property_id", verify_token, delete_propertyby_id);
 
-estate_route.get("/:apartment_id", get_apartmentby_id);
+estate_route.get("/apartment", apartments);
+estate_route.get("/house", houses);
+estate_route.get("/commercial", commercials);
+estate_route.get("/villa", Villas);
+estate_route.get("/:property_id", get_propertyby_id);
+
 export default estate_route;

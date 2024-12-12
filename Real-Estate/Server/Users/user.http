@@ -4,9 +4,9 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Kumba Macarthy",
-    "email": "kumba@gmail.com",
-    "password": "kumba"
+    "fullname": "Sia Tia",
+    "email": "sia@gmail.com",
+    "password": "sia"
 }
 
 # Sign In
@@ -15,18 +15,19 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-   "email": "kumba@gmail.com",
-    "password": "kumba"
+     "email": "sia@gmail.com",
+    "password": "sia"
 }
 
 ###
 # Post a profile Picture assets/myProfile.jpeg
-@FILENAME =assets/myProfile.jpg
+@FILENAME =assets/estate.jpg
 @FILE_FORM_NAME=userfile
 @FILE_MIME_TYPE=assets/jpg
-@user_id =674d3f59119b52119816c298
+# @FILE_MIME_TYPE=image/jpeg
+@user_id =675624da81be76edfaa59847
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRkM2Y1OTExOWI1MjExOTgxNmMyOTgiLCJmdWxsbmFtZSI6Ikt1bWJhIE1hY2FydGh5IiwiZW1haWwiOiJrdW1iYUBnbWFpbC5jb20iLCJpYXQiOjE3MzMxMTU3NTB9.uCCUOxWRWkDf5eeWDmEMoy1kDItQcoha6lc7t8UrqlQ
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU2NGMxMWUwZDE1MjdkZTBhNTVmZTUiLCJmdWxsbmFtZSI6IlNpYSBUaWEiLCJlbWFpbCI6InNpYUBnbWFpbC5jb20iLCJpYXQiOjE3MzM3MDg4NDJ9.NTq07Jr-e5kjOIYpR48lwkMYbQJ5S_jEBRpt8nL4mZQ
 
 
 ###

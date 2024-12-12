@@ -1,12 +1,14 @@
 import { RequestHandler } from "express";
 import { StandardResponse } from "../Helper/standardResponse";
-import { Estate, EstateType } from "./estate_model";
+import { DEFAULT_PICTURE, Estate, EstateType } from "./estate_model";
+import { ErrorWithStatus } from "../Helper/errorhandler";
 
 type Image = {
   filename: string;
   originalname: string;
 };
-export const add_apartment: RequestHandler<
+// Create
+export const add: RequestHandler<
   unknown,
   StandardResponse<EstateType>,
   EstateType,
@@ -55,6 +57,9 @@ export const add_apartment: RequestHandler<
       newApartmentData.images = req.files.map((file: Express.Multer.File) => ({
         filename: file.filename,
         originalname: file.originalname,
+        path: file.path,
+        mimetype: file.mimetype,
+        size: file.size,
       }));
     }
 
@@ -69,21 +74,184 @@ export const add_apartment: RequestHandler<
   }
 };
 
-export const get_apartmentby_id: RequestHandler<
-  { apartment_id: string },
+// Read
+export const get_propertyby_id: RequestHandler<
+  { property_id: string },
   StandardResponse<EstateType | null>,
   unknown,
   unknown
 > = async (req, res, next) => {
   try {
-    const { apartment_id } = req.params;
-    // console.log(apartment_id);
+    const { property_id } = req.params;
+    // console.log(property_id);
     const result = await Estate.findOne({
-      _id: apartment_id,
+      _id: property_id,
     }).lean();
     console.log(result);
     res.json({ success: true, data: result });
   } catch (error) {
     console.log(error);
+  }
+};
+
+// Update
+export const update_propertyby_id: RequestHandler<
+  { property_id: string },
+  StandardResponse<number>,
+  Partial<EstateType>,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id } = req.params;
+    const { tokenData } = req;
+    const updatedField: Partial<EstateType> = req.body;
+
+    // Ensure only the user who added the property can modify it
+    const existingProperty = await Estate.findOne({
+      _id: property_id,
+      "addedBy.user_id": tokenData._id,
+    });
+
+    if (!existingProperty) {
+      throw new ErrorWithStatus(
+        "Property not found or unauthorized access",
+        403
+      );
+    }
+
+    // Handle New Images if modified
+    if (req.files && Array.isArray(req.files)) {
+      const files = req.files as Express.Multer.File[];
+      // Map and convert each file object into a Mongoose-compatible object
+      const imageDocs = files.map((file) => ({
+        filename: file.filename,
+        originalname: file.originalname,
+        path: file.path,
+        mimetype: file.mimetype,
+        size: file.size,
+      }));
+
+      // Use `push` to add each image document to the existing array
+      existingProperty.images.push(...imageDocs);
+    }
+    // console.log(existingProperty);
+    Object.assign(existingProperty, updatedField);
+
+    // Update the last updated with the current date
+    updatedField.lastUpdated = new Date();
+
+    const result = await Estate.updateOne(
+      { _id: property_id },
+      { $set: existingProperty }
+    );
+    if (result.modifiedCount == 0) {
+      res.json({ success: false, data: 0 });
+    }
+    res.json({ success: true, data: result.modifiedCount });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Delete
+export const delete_propertyby_id: RequestHandler<
+  { property_id: string },
+  unknown,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id } = req.params;
+    const { tokenData } = req;
+
+    const result = await Estate.deleteOne({
+      _id: property_id,
+      "addedBy.user_id": tokenData._id,
+    });
+
+    if (result.deletedCount == 0) {
+      res.json({ success: false, data: 0 });
+    }
+    res.json({ success: true, data: result.deletedCount });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const apartments: RequestHandler<
+  unknown,
+  StandardResponse<EstateType[] | null>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    // fetch all the property from the database
+    const apartments = await Estate.find({ propertyType: "apartment" });
+    if (!apartments || apartments.length == 0) {
+      res.json({ success: false, data: null });
+    }
+    res.json({ success: true, data: apartments });
+    console.log(apartments);
+  } catch (error) {
+    console.error("Error occur fetching the apartmet", error);
+  }
+};
+
+export const houses: RequestHandler<
+  unknown,
+  StandardResponse<EstateType[] | null>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    // fetch all the property from the database
+    const houses = await Estate.find({ propertyType: "house" }).lean();
+    if (!houses || houses.length == 0) {
+      res.json({ success: false, data: null });
+    }
+    res.json({ success: true, data: houses });
+    console.log(houses);
+  } catch (error) {
+    console.error("Error occur fetching the apartmet", error);
+  }
+};
+
+export const commercials: RequestHandler<
+  unknown,
+  StandardResponse<EstateType[] | null>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    // fetch all the property from the database
+    const commercials = await Estate.find({
+      propertyType: "commercial",
+    }).lean();
+    if (!commercials || commercials.length == 0) {
+      res.json({ success: false, data: null });
+    }
+    res.json({ success: true, data: commercials });
+    console.log(commercials);
+  } catch (error) {
+    console.error("Error occur fetching the apartmet", error);
+  }
+};
+
+export const Villas: RequestHandler<
+  unknown,
+  StandardResponse<EstateType[] | null>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    // fetch all the property from the database
+    const villas = await Estate.find({ propertyType: "villa" }).lean();
+    if (!villas || Villas.length == 0) {
+      res.json({ success: false, data: null });
+    }
+    res.json({ success: true, data: villas });
+    console.log(villas);
+  } catch (error) {
+    console.error("Error occur fetching the apartmet", error);
   }
 };

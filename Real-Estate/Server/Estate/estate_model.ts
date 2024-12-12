@@ -2,7 +2,7 @@ import mongoose, { InferSchemaType, Schema, model, Types } from "mongoose";
 
 export const DEFAULT_PICTURE = {
   originalname: "estate.jpg",
-  mimetype: "assets/jpg",
+  mimetype: "image/jpeg",
   path: "assets/estate.jpg",
   size: 150,
 };
@@ -44,7 +44,10 @@ const estateSchema = new Schema(
         default: DEFAULT_PICTURE,
       },
     ],
-
+    // images: {
+    //   type: [imageSchema],
+    //   default: DEFAULT_PICTURE,
+    // },
     addedBy: {
       user_id: mongoose.Types.ObjectId,
       fullname: String,
@@ -52,7 +55,16 @@ const estateSchema = new Schema(
     },
     propertyType: {
       type: String,
-      enum: ["apartment", "house", "commercial", "land"],
+      enum: [
+        "apartment",
+        "house",
+        "commercial",
+        "villa",
+        "office",
+        "townhouse",
+        "shop",
+        "garage",
+      ],
       required: true,
     },
     features: {
@@ -72,3 +84,10 @@ const estateSchema = new Schema(
 // Create the model and export it
 export const Estate = model("Estate", estateSchema);
 export type EstateType = InferSchemaType<typeof estateSchema>;
+
+const imageSchema = new Schema({
+  originalname: { type: String, required: true },
+  mimetype: { type: String, required: true },
+  path: { type: String, required: true },
+  size: { type: Number, required: true },
+});

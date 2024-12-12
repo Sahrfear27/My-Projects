@@ -32,7 +32,7 @@ app.use(cors());
 
 // Routes
 app.use("/users", user_Route);
-app.use("/apartment", verify_token, estate_route);
+app.use("/property", verify_token, estate_route);
 
 // Catch all unhandled requests
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
