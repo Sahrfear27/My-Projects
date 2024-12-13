@@ -4,9 +4,9 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Sia Tia",
-    "email": "sia@gmail.com",
-    "password": "sia"
+    "fullname": "John Kariuki",
+    "email": "john@gmail.com",
+    "password": "john"
 }
 
 # Sign In
@@ -15,19 +15,19 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-     "email": "sia@gmail.com",
-    "password": "sia"
+    "email": "john@gmail.com",
+    "password": "john"
 }
 
 ###
 # Post a profile Picture assets/myProfile.jpeg
-@FILENAME =assets/estate.jpg
+@FILENAME =assets/estate3.jpg
 @FILE_FORM_NAME=userfile
-@FILE_MIME_TYPE=assets/jpg
-# @FILE_MIME_TYPE=image/jpeg
-@user_id =675624da81be76edfaa59847
+# @FILE_MIME_TYPE=assets/jpg
+@FILE_MIME_TYPE=image/jpeg
+@user_id =675b1fad4ebe782a34ff45eb
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU2NGMxMWUwZDE1MjdkZTBhNTVmZTUiLCJmdWxsbmFtZSI6IlNpYSBUaWEiLCJlbWFpbCI6InNpYUBnbWFpbC5jb20iLCJpYXQiOjE3MzM3MDg4NDJ9.NTq07Jr-e5kjOIYpR48lwkMYbQJ5S_jEBRpt8nL4mZQ
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzViMWZhZDRlYmU3ODJhMzRmZjQ1ZWIiLCJmdWxsbmFtZSI6IkpvaG4gS2FyaXVraSIsImVtYWlsIjoiam9obkBnbWFpbC5jb20iLCJpYXQiOjE3MzQwMjUxNDV9.pT4buLLG9TQ9sqoRlntH-Fy-I0GdZZbftPqCh-X7Dqg
 
 
 ###

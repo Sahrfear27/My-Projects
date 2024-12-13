@@ -31,6 +31,7 @@ app.use(helmet());
 app.use(cors());
 
 // Routes
+// app.use("/EstateImages", express.static(path.join(__dirname, "EstateImages")));
 app.use("/users", user_Route);
 app.use("/property", verify_token, estate_route);
 

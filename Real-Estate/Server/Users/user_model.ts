@@ -4,8 +4,8 @@ import { InferSchemaType, Schema, model } from "mongoose";
 
 export const GUEST_PICTURE = {
   originalname: "guest.jpg",
-  mimetype: "assets/jpg",
-  // mimetype: "image/jpeg",
+  // mimetype: "assets/jpg",
+  mimetype: "image/jpeg",
   path: "assets/guest.jpg",
   size: 150,
 };

@@ -14,8 +14,18 @@ import { verify_token } from "../Helper/verify_token";
 
 const estate_route = express.Router();
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "EstateImages/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage, limits: { files: 5 } });
 // Set the upload destination and the max number of files allowed
-const upload = multer({ dest: "EstateImages/", limits: { files: 5 } });
+// const upload = multer({ dest: "EstateImages/", limits: { files: 5 } });
 
 estate_route.post("/add", verify_token, upload.array("estatefile", 5), add);
 // estate_route.post("/add", uploadFiles, add);

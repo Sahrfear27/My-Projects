@@ -2,7 +2,8 @@ import { RequestHandler } from "express";
 import { StandardResponse } from "../Helper/standardResponse";
 import { DEFAULT_PICTURE, Estate, EstateType } from "./estate_model";
 import { ErrorWithStatus } from "../Helper/errorhandler";
-
+import fs from "fs";
+import path from "path";
 type Image = {
   filename: string;
   originalname: string;
@@ -26,7 +27,7 @@ export const add: RequestHandler<
       features,
     } = req.body;
 
-    console.log(req.files);
+    // console.log(req.files);
 
     // Construct the new apartment document
     const newApartmentData = {
@@ -182,18 +183,24 @@ export const apartments: RequestHandler<
   unknown,
   StandardResponse<EstateType[] | null>,
   unknown,
-  unknown
+  { page?: string; limit?: string }
 > = async (req, res, next) => {
   try {
-    // fetch all the property from the database
-    const apartments = await Estate.find({ propertyType: "apartment" });
+    const { page = "1", limit = "10" } = req.query;
+    const apartments = await Estate.find({ propertyType: "apartment" })
+      .skip((Number(page) - 1) * Number(limit))
+      .limit(Number(limit))
+      .lean();
+
     if (!apartments || apartments.length == 0) {
       res.json({ success: false, data: null });
     }
+
     res.json({ success: true, data: apartments });
     console.log(apartments);
   } catch (error) {
-    console.error("Error occur fetching the apartmet", error);
+    console.error("Error fetching apartments:", error);
+    next(error);
   }
 };
 
