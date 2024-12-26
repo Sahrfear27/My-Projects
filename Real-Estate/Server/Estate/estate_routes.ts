@@ -1,13 +1,11 @@
 import express from "express";
 import {
   add,
-  apartments,
-  commercials,
-  delete_propertyby_id,
   get_propertyby_id,
-  houses,
   update_propertyby_id,
-  Villas,
+  delete_propertyby_id,
+  get_properties_by_property_type,
+  get_properties_by_listing_type,
 } from "./estate_controller";
 import multer from "multer";
 import { verify_token } from "../Helper/verify_token";
@@ -24,12 +22,8 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage, limits: { files: 5 } });
-// Set the upload destination and the max number of files allowed
-// const upload = multer({ dest: "EstateImages/", limits: { files: 5 } });
-
 estate_route.post("/add", verify_token, upload.array("estatefile", 5), add);
-// estate_route.post("/add", uploadFiles, add);
-
+estate_route.get("/:property_id", get_propertyby_id);
 estate_route.put(
   "/:property_id",
   verify_token,
@@ -37,11 +31,6 @@ estate_route.put(
   update_propertyby_id
 );
 estate_route.delete("/:property_id", verify_token, delete_propertyby_id);
-
-estate_route.get("/apartment", apartments);
-estate_route.get("/house", houses);
-estate_route.get("/commercial", commercials);
-estate_route.get("/villa", Villas);
-estate_route.get("/:property_id", get_propertyby_id);
-
+estate_route.get("/type/:propertyType", get_properties_by_property_type);
+estate_route.get("/listing/type/:listingType", get_properties_by_listing_type);
 export default estate_route;

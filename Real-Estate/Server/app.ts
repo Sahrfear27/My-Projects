@@ -31,7 +31,6 @@ app.use(helmet());
 app.use(cors());
 
 // Routes
-// app.use("/EstateImages", express.static(path.join(__dirname, "EstateImages")));
 app.use("/users", user_Route);
 app.use("/property", verify_token, estate_route);
 
@@ -51,7 +50,6 @@ app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-// app.all: Check if all connection are successful
 app.listen(app.get("port"), () =>
   console.log("Listining to port" + " " + app.get("port"))
 );

@@ -1,7 +1,5 @@
 import { InferSchemaType, Schema, model } from "mongoose";
 
-// Create a guest picture for the user.
-
 export const GUEST_PICTURE = {
   originalname: "guest.jpg",
   // mimetype: "assets/jpg",
@@ -9,7 +7,6 @@ export const GUEST_PICTURE = {
   path: "assets/guest.jpg",
   size: 150,
 };
-// Create user model
 const UserSchema = new Schema(
   {
     fullname: { type: String, required: true },

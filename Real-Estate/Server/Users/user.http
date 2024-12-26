@@ -4,9 +4,9 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "John Kariuki",
-    "email": "john@gmail.com",
-    "password": "john"
+    "fullname": "Sahrfear Macarthy",
+     "email": "sahrfear@gmail.com",
+    "password": "sahrfear"
 }
 
 # Sign In
@@ -15,19 +15,19 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "john@gmail.com",
-    "password": "john"
+    "email": "sahrfear@gmail.com",
+    "password": "sahrfear"
 }
 
 ###
 # Post a profile Picture assets/myProfile.jpeg
-@FILENAME =assets/estate3.jpg
+@FILENAME =assets/myProfile.jpg
 @FILE_FORM_NAME=userfile
 # @FILE_MIME_TYPE=assets/jpg
 @FILE_MIME_TYPE=image/jpeg
-@user_id =675b1fad4ebe782a34ff45eb
+@user_id =676d9786fe19125be10cdc31
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzViMWZhZDRlYmU3ODJhMzRmZjQ1ZWIiLCJmdWxsbmFtZSI6IkpvaG4gS2FyaXVraSIsImVtYWlsIjoiam9obkBnbWFpbC5jb20iLCJpYXQiOjE3MzQwMjUxNDV9.pT4buLLG9TQ9sqoRlntH-Fy-I0GdZZbftPqCh-X7Dqg
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzZkOTc4NmZlMTkxMjViZTEwY2RjMzEiLCJmdWxsbmFtZSI6IlNpYSBNYWNhcnRoeSIsImVtYWlsIjoic2lhQGdtYWlsLmNvbSIsImlhdCI6MTczNTIzNTQ3MX0.-fJ38fbwVIkucNeGiZBY7t1oq__54hVx2--eqeRQ4W4
 
 
 ###

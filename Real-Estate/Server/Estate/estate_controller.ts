@@ -1,9 +1,8 @@
 import { RequestHandler } from "express";
 import { StandardResponse } from "../Helper/standardResponse";
-import { DEFAULT_PICTURE, Estate, EstateType } from "./estate_model";
+import { Estate, EstateType } from "./estate_model";
 import { ErrorWithStatus } from "../Helper/errorhandler";
-import fs from "fs";
-import path from "path";
+
 type Image = {
   filename: string;
   originalname: string;
@@ -23,11 +22,10 @@ export const add: RequestHandler<
       location,
       price,
       availability,
+      listingType,
       propertyType,
       features,
     } = req.body;
-
-    // console.log(req.files);
 
     // Construct the new apartment document
     const newApartmentData = {
@@ -43,6 +41,7 @@ export const add: RequestHandler<
       price,
       availability: availability ?? true,
       images: [] as Image[],
+      listingType,
       propertyType,
       features,
       addedBy: {
@@ -95,7 +94,7 @@ export const get_propertyby_id: RequestHandler<
   }
 };
 
-// Update
+// Update property by id based on the method type (PUT or PATCH)
 export const update_propertyby_id: RequestHandler<
   { property_id: string },
   StandardResponse<number>,
@@ -107,50 +106,47 @@ export const update_propertyby_id: RequestHandler<
     const { tokenData } = req;
     const updatedField: Partial<EstateType> = req.body;
 
-    // Ensure only the user who added the property can modify it
     const existingProperty = await Estate.findOne({
       _id: property_id,
       "addedBy.user_id": tokenData._id,
     });
-
     if (!existingProperty) {
+      res.status(404).json({ success: false, data: 0 });
       throw new ErrorWithStatus(
         "Property not found or unauthorized access",
         403
       );
     }
 
-    // Handle New Images if modified
+    // Handle images if provided
     if (req.files && Array.isArray(req.files)) {
-      const files = req.files as Express.Multer.File[];
-      // Map and convert each file object into a Mongoose-compatible object
-      const imageDocs = files.map((file) => ({
+      const newImages = req.files.map((file: Express.Multer.File) => ({
         filename: file.filename,
         originalname: file.originalname,
-        path: file.path,
-        mimetype: file.mimetype,
-        size: file.size,
       }));
-
-      // Use `push` to add each image document to the existing array
-      existingProperty.images.push(...imageDocs);
+      existingProperty.images.push(...newImages);
     }
-    // console.log(existingProperty);
-    Object.assign(existingProperty, updatedField);
 
-    // Update the last updated with the current date
-    updatedField.lastUpdated = new Date();
-
-    const result = await Estate.updateOne(
-      { _id: property_id },
-      { $set: existingProperty }
-    );
-    if (result.modifiedCount == 0) {
-      res.json({ success: false, data: 0 });
+    // Determine method type (PUT or PATCH)
+    let result;
+    if (req.method === "PUT") {
+      result = await Estate.updateOne(
+        { _id: property_id },
+        { $set: updatedField }
+      );
+      res.json({ success: true, data: result.modifiedCount });
+      console.log(result);
+    } else if (req.method === "PATCH") {
+      result = await Estate.updateOne(
+        { _id: property_id },
+        { $set: updatedField, $setOnInsert: { lastUpdated: new Date() } }
+      );
+      res.json({ success: true, data: result.modifiedCount });
+      console.log(result);
     }
-    res.json({ success: true, data: result.modifiedCount });
   } catch (error) {
-    console.log(error);
+    console.error("Error updating property:", error);
+    res.status(500).json({ success: false, data: 0 });
   }
 };
 
@@ -179,86 +175,92 @@ export const delete_propertyby_id: RequestHandler<
   }
 };
 
-export const apartments: RequestHandler<
-  unknown,
+// Get properties by property type
+export const get_properties_by_property_type: RequestHandler<
+  { propertyType: string },
   StandardResponse<EstateType[] | null>,
   unknown,
   { page?: string; limit?: string }
+  // unknown
 > = async (req, res, next) => {
   try {
+    const { propertyType } = req.params;
+
+    // Validate propertyType
+    const validPropertyTypes = [
+      "apartment",
+      "house",
+      "commercial",
+      "villa",
+      "office",
+      "townhouse",
+      "shop",
+      "garage",
+    ];
+    if (!validPropertyTypes.includes(propertyType)) {
+      res.status(400).json({
+        success: false,
+        data: null,
+      });
+    }
+
+    // Parse query parameters
     const { page = "1", limit = "10" } = req.query;
-    const apartments = await Estate.find({ propertyType: "apartment" })
-      .skip((Number(page) - 1) * Number(limit))
-      .limit(Number(limit))
+    const pageNumber = parseInt(page, 10);
+    const limitNumber = parseInt(limit, 10);
+
+    // Validate parsed numbers
+    if (
+      isNaN(pageNumber) ||
+      isNaN(limitNumber) ||
+      pageNumber <= 0 ||
+      limitNumber <= 0
+    ) {
+      res.status(400).json({
+        success: false,
+        data: null,
+      });
+    }
+
+    // Query the database by propertyType with pagination
+    const properties = await Estate.find({ propertyType: propertyType })
+      .skip((pageNumber - 1) * limitNumber)
+      .limit(limitNumber)
       .lean();
 
-    if (!apartments || apartments.length == 0) {
-      res.json({ success: false, data: null });
-    }
-
-    res.json({ success: true, data: apartments });
-    console.log(apartments);
+    res.status(200).json({
+      success: true,
+      data: properties,
+    });
   } catch (error) {
-    console.error("Error fetching apartments:", error);
-    next(error);
+    console.error("Error fetching properties by property type:", error);
+    res.status(500).json({
+      success: false,
+      data: null,
+    });
   }
 };
 
-export const houses: RequestHandler<
-  unknown,
+export const get_properties_by_listing_type: RequestHandler<
+  { listingType: string },
   StandardResponse<EstateType[] | null>,
   unknown,
-  unknown
-> = async (req, res, next) => {
-  try {
-    // fetch all the property from the database
-    const houses = await Estate.find({ propertyType: "house" }).lean();
-    if (!houses || houses.length == 0) {
-      res.json({ success: false, data: null });
-    }
-    res.json({ success: true, data: houses });
-    console.log(houses);
-  } catch (error) {
-    console.error("Error occur fetching the apartmet", error);
-  }
-};
+  { page?: string; limit?: string }
+> = async (req, res) => {
+  const { listingType } = req.params;
 
-export const commercials: RequestHandler<
-  unknown,
-  StandardResponse<EstateType[] | null>,
-  unknown,
-  unknown
-> = async (req, res, next) => {
-  try {
-    // fetch all the property from the database
-    const commercials = await Estate.find({
-      propertyType: "commercial",
-    }).lean();
-    if (!commercials || commercials.length == 0) {
-      res.json({ success: false, data: null });
-    }
-    res.json({ success: true, data: commercials });
-    console.log(commercials);
-  } catch (error) {
-    console.error("Error occur fetching the apartmet", error);
+  if (!["rent", "sale"].includes(listingType)) {
+    res.json({ success: false, data: null });
   }
-};
-
-export const Villas: RequestHandler<
-  unknown,
-  StandardResponse<EstateType[] | null>,
-  unknown,
-  unknown
-> = async (req, res, next) => {
   try {
-    // fetch all the property from the database
-    const villas = await Estate.find({ propertyType: "villa" }).lean();
-    if (!villas || Villas.length == 0) {
-      res.json({ success: false, data: null });
-    }
-    res.json({ success: true, data: villas });
-    console.log(villas);
+    const { page = "1", limit = "10" } = req.query;
+    const listings = await Estate.find({ listingType })
+      .skip((parseInt(page) - 1) * parseInt(limit))
+      .limit(parseInt(limit))
+      .lean();
+    res.json({ success: true, data: listings });
   } catch (error) {
-    console.error("Error occur fetching the apartmet", error);
+    console.error("Error fetching listings by listing type:", error);
+    res.json({ success: false, data: null });
   }
 };

@@ -6,7 +6,7 @@
 @FILENAME =assets/estate3.jpg
 @FILE_MIME_TYPE=image/jpeg
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzViMWZhZDRlYmU3ODJhMzRmZjQ1ZWIiLCJmdWxsbmFtZSI6IkpvaG4gS2FyaXVraSIsImVtYWlsIjoiam9obkBnbWFpbC5jb20iLCJpYXQiOjE3MzQwMjUzODd9.V6hx_5g_nxioFpRsfPZePHvqqP7PNU1OhAOp3jdQtfw
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzZjNTU2MTQ2OTQ2OWZiM2MyM2MyMDkiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJpYXQiOjE3MzUyMzY3OTJ9.Ey6VKjVf1rqsy6Lnx9wWajZ4984UcUB9sWjEXMqi9nI
 
 
 # Sign In to Get the Token
@@ -14,8 +14,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "john@gmail.com",
-    "password": "john"
+    "email": "sahrfear@gmail.com",
+    "password": "sahrfear"
 }
 ###
 
@@ -27,11 +27,11 @@ Authorization: Bearer {{authToken}}
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Ndambadu Lodge
+Ndambadu Apartment
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
-A beautiful lodge with a scenic view of the ocean.
+Million dollar view of the city.
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[address]"
 
@@ -39,11 +39,11 @@ Content-Disposition: form-data; name="location[address]"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[city]"
 
-Freetown
+San Franscisco
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[state]"
 
-Sierra Leone
+USA
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[postalCode]"
 
@@ -63,7 +63,11 @@ Content-Disposition: form-data; name="price"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="propertyType"
 
-villa
+apartment
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="listingType"
+
+rent
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bedrooms]"
 
@@ -71,7 +75,7 @@ Content-Disposition: form-data; name="features[bedrooms]"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bathrooms]"
 
-2
+10
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[area]"
 
@@ -95,25 +99,24 @@ Content-Type: image/jpeg
 
 # Get apartment by id
 ###
-GET  http://localhost:4007/property/674d219d21cbddc0c5adb5e3
+GET  http://localhost:4007/property/676d9899fe19125be10cdc3c
 Authorization:Bearer {{authToken}}
 
 
-
-# Update Property by id and owner id
+# Update Property by id
 ###
-PUT http://localhost:4007/property/674d207921cbddc0c5adb5dc
+PUT http://localhost:4007/property/676d9dc406490ed7c46a4883
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 Authorization: Bearer {{authToken}}
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Luxury  Modern Loft Villa
+Fancy Apartment
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
-An updated description for the luxuy modern loft with enhanced features.
+Million dollar view of the city that you can't resist.
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[address]"
 
@@ -121,34 +124,60 @@ Content-Disposition: form-data; name="location[address]"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[city]"
 
-San Francisco
+Koidu
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[state]"
 
-CA
+KD
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="price"
 
 4000
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="propertyType"
-
-Villa
-------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bedrooms]"
 
 1
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="estatefile"; filename="myProfile.jpg"
+Content-Disposition: form-data; name="estatefile"; filename="estate2.jpg"
 Content-Type: image/jpeg
 
-< ./myProfile.jpg>
+< ./estate2.jpg>
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
+# Patch Property by id: it partially updates the property
+##
+PATCH http://localhost:4007/property/67645b0e8681e3f610937400
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer {{authToken}}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="listingType"
+
+rent
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="propertyType"
+
+townhouse
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+# Delete Property by id and owner id
+###
+DELETE http://localhost:4007/property/675b313592a59886d2797b3f
+Authorization: Bearer {{authToken}}
 
 
 
 # Get all proptety type
 ###
-GET  http://localhost:4007/property/house
+GET  http://localhost:4007/property/type/house
 Authorization:Bearer {{authToken}}
+
+# Get property by listing type
+###
+GET  http://localhost:4007/property/listing/type/rent
+Authorization:Bearer {{authToken}}
+
+
+
+
+

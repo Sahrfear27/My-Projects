@@ -31,8 +31,7 @@ const estateSchema = new Schema(
       },
     },
     price: { type: Number, required: true },
-    availability: { type: Boolean, default: true },
-
+    availability: { type: Boolean, default: false },
     images: [
       {
         type: {
@@ -44,14 +43,16 @@ const estateSchema = new Schema(
         default: DEFAULT_PICTURE,
       },
     ],
-    // images: {
-    //   type: [imageSchema],
-    //   default: DEFAULT_PICTURE,
-    // },
     addedBy: {
       user_id: mongoose.Types.ObjectId,
       fullname: String,
       email: String,
+    },
+    listingType: {
+      type: String,
+      enum: ["rent", "sale"],
+      required: true,
+      default: "sale",
     },
     propertyType: {
       type: String,
@@ -65,16 +66,17 @@ const estateSchema = new Schema(
         "shop",
         "garage",
       ],
+      default: "apartment",
       required: true,
     },
     features: {
       bedrooms: { type: Number, min: 0 },
       bathrooms: { type: Number, min: 0 },
-      area: { type: Number, required: true }, // Area in square feet or meters
+      area: { type: Number, required: true },
       parking: { type: Boolean, default: false },
       furnished: { type: Boolean, default: false },
     },
-    reviews: [reviewSchema], // Array of reviews using the reviewSchema
+    reviews: [reviewSchema],
     dateAdded: { type: Date, default: Date.now },
     lastUpdated: { type: Date, default: Date.now },
   },
