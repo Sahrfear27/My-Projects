@@ -4,9 +4,9 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Sahrfear Macarthy",
-     "email": "sahrfear@gmail.com",
-    "password": "sahrfear"
+    "fullname": "Maryanne Bime",
+     "email": "maryanne@gmail.com",
+    "password": "maryanne"
 }
 
 # Sign In

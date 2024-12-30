@@ -1,0 +1,28 @@
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1NDg2NTF9.hakLhtEQcYEWXyOsdYTjsCkU3fgn27R1iHTlFhwldio
+
+
+# Sign In to Get the Token
+POST http://localhost:4007/users/signin
+Content-Type: application/json
+
+{
+    "email":"sahrfear@gmail.com",
+    "password": "sahrfear"
+}
+
+###
+GET  http://localhost:4007/property
+Authorization:Bearer {{authToken}}
+
+
+### PATCH Request to Update Property Status
+PATCH http://localhost:4007/property/677242b73629b2ba76727b6f
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+{
+    "status": "approved"
+}
+
+

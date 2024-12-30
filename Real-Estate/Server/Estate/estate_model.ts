@@ -79,6 +79,11 @@ const estateSchema = new Schema(
     reviews: [reviewSchema],
     dateAdded: { type: Date, default: Date.now },
     lastUpdated: { type: Date, default: Date.now },
+    status: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "pending",
+    },
   },
   { timestamps: true }
 );

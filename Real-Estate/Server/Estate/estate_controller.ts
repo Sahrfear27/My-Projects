@@ -23,6 +23,7 @@ export const add: RequestHandler<
       price,
       availability,
       listingType,
+      status,
       propertyType,
       features,
     } = req.body;
@@ -42,6 +43,7 @@ export const add: RequestHandler<
       availability: availability ?? true,
       images: [] as Image[],
       listingType,
+      status,
       propertyType,
       features,
       addedBy: {

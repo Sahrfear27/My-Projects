@@ -11,30 +11,55 @@ export const sign_up: RequestHandler<
   unknown
 > = async (req, res, next) => {
   try {
-    const { fullname, email } = req.body;
+    const { fullname, email, password, role } = req.body;
     // Check if email already exists in the database
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       throw new Error("Email already exists");
     }
-
     // Hash the password
-    const hashpassword = await hash(req.body.password, 10);
+    const hashpassword = await hash(password, 10);
 
     // Create the new user
     const userCreated = await userModel.create({
       fullname: fullname,
       email: email,
       password: hashpassword,
+      role: role || "user",
     });
 
     if (!userCreated) {
       console.log("user cannot be created");
-    } else {
-      res.json({ success: true, data: userCreated });
-      console.log("User has been created to the database");
+      res.status(400).json({ success: false, data: null! });
     }
+    res.json({ success: true, data: userCreated });
+    console.log("User Successfully Created");
+
+    // // Check if email already exists in the database
+    // const existingUser = await userModel.findOne({ email });
+    // if (existingUser) {
+    //   throw new Error("Email already exists");
+    // }
+
+    // // Hash the password
+    // const hashpassword = await hash(req.body.password, 10);
+
+    // // Create the new user
+    // const userCreated = await userModel.create({
+    //   fullname: fullname,
+    //   email: email,
+    //   password: hashpassword,
+
+    // });
+
+    // if (!userCreated) {
+    //   console.log("user cannot be created");
+    // } else {
+    //   res.json({ success: true, data: userCreated });
+    //   console.log("User has been created to the database");
+    // }
   } catch (error) {
+    console.log("User cannot be created", error);
     next(error);
   }
 };
@@ -62,7 +87,12 @@ export const sign_in: RequestHandler<
       throw new Error("Could not sign Token");
     }
     const jwt = sign(
-      { _id: user._id, fullname: user.fullname, email: user.email },
+      {
+        _id: user._id,
+        fullname: user.fullname,
+        email: user.email,
+        role: user.role,
+      },
       secret_key
     );
 

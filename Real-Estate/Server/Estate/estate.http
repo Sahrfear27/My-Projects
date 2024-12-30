@@ -6,7 +6,7 @@
 @FILENAME =assets/estate3.jpg
 @FILE_MIME_TYPE=image/jpeg
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzZjNTU2MTQ2OTQ2OWZiM2MyM2MyMDkiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJpYXQiOjE3MzUyMzY3OTJ9.Ey6VKjVf1rqsy6Lnx9wWajZ4984UcUB9sWjEXMqi9nI
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1NDE0Nzl9.evdFTRUFtO9bEmCR65lvnvD9lrXD0gn8dC2Cq7VHIYI
 
 
 # Sign In to Get the Token
@@ -27,7 +27,7 @@ Authorization: Bearer {{authToken}}
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Ndambadu Apartment
+Fancy Apartment
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
@@ -68,6 +68,10 @@ apartment
 Content-Disposition: form-data; name="listingType"
 
 rent
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="status"
+
+approved
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bedrooms]"
 
