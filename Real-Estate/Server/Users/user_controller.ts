@@ -12,7 +12,6 @@ export const sign_up: RequestHandler<
 > = async (req, res, next) => {
   try {
     const { fullname, email, password, role } = req.body;
-    // Check if email already exists in the database
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       throw new Error("Email already exists");

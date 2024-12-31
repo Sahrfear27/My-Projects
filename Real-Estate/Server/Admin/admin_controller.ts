@@ -13,6 +13,14 @@ export const get_all_properties: RequestHandler<
   unknown,
   unknown
 > = async (req, res, next) => {
+  // Only admin can view all properties status (pending, approved, rejected)
+  if (req.tokenData.role !== "admin") {
+    res.status(403).json({
+      success: false,
+      data: null,
+    });
+    throw new Error("Only admin can view all properties");
+  }
   const properties = await Estate.find().lean();
   res.json({ success: true, data: properties });
 

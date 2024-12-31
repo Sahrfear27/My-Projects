@@ -6,7 +6,7 @@
 @FILENAME =assets/estate3.jpg
 @FILE_MIME_TYPE=image/jpeg
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1NDE0Nzl9.evdFTRUFtO9bEmCR65lvnvD9lrXD0gn8dC2Cq7VHIYI
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTYwNDg0MX0.-73uXdBStCyRqIu7zzcmEGtzcDgIfk4T5WohRwQmVu8
 
 
 # Sign In to Get the Token
@@ -14,8 +14,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "sahrfear@gmail.com",
-    "password": "sahrfear"
+    "email": "mamiesia@gmail.com",
+    "password": "mamiesia"
 }
 ###
 
@@ -27,11 +27,11 @@ Authorization: Bearer {{authToken}}
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Fancy Apartment
+San Franscisco Villa
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
-Million dollar view of the city.
+A beautiful villa in the heart of San Franscisco with a beautiful view of the golden gate bridge.
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[address]"
 
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="price"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="propertyType"
 
-apartment
+house
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="listingType"
 
@@ -71,7 +71,7 @@ rent
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="status"
 
-approved
+pending
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bedrooms]"
 

@@ -4,9 +4,10 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Maryanne Bime",
-     "email": "maryanne@gmail.com",
-    "password": "maryanne"
+    "fullname": "Aiah Macarthy",
+     "email": "aiah@gmail.com",
+    "password": "aiah",
+    "role": "admin"
 }
 
 # Sign In
@@ -15,8 +16,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "sahrfear@gmail.com",
-    "password": "sahrfear"
+    "email": "aiah@gmail.com",
+    "password": "aiah"
 }
 
 ###
