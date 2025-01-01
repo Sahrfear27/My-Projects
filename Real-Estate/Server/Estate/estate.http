@@ -6,10 +6,20 @@
 @FILENAME =assets/estate3.jpg
 @FILE_MIME_TYPE=image/jpeg
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTYwNDg0MX0.-73uXdBStCyRqIu7zzcmEGtzcDgIfk4T5WohRwQmVu8
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTcxNjQ2MH0.QuUNa6Jnj40vHUqqaVGTxUp3Gk81sHLwEeajNHN_IOw
+
 
 
 # Sign In to Get the Token
+POST http://localhost:4007/users/signin
+Content-Type: application/json
+
+{
+    "email": "sahrfear@gmail.com",
+    "password": "sahrfear"
+}
+
+###
 POST http://localhost:4007/users/signin
 Content-Type: application/json
 
@@ -182,6 +192,27 @@ GET  http://localhost:4007/property/listing/type/rent
 Authorization:Bearer {{authToken}}
 
 
+# Add Review
+###
+POST http://localhost:4007/property/677242b73629b2ba76727b6f/reviews
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "review": "This review is added by Mamie Sia",
+    "rating": 5
+}
 
 
+# Get all reviews
+###
+GET  http://localhost:4007/property/677242b73629b2ba76727b6f/reviews
 
+# Get review by id
+###
+GET  http://localhost:4007/property/677242b73629b2ba76727b6f/reviews/6774db76a7c617e697d30e85
+
+# Delete Review by review id
+###
+DELETE http://localhost:4007/property/677242b73629b2ba76727b6f/6774eaefcee8670ab0c21e5b
+Authorization: Bearer {{authToken}}

@@ -8,12 +8,12 @@ export const DEFAULT_PICTURE = {
 };
 //
 // Define the schema for reviews
-const reviewSchema = new Schema({
-  review: { type: String, required: true },
-  rating: { type: Number, required: true },
-  by: { user_id: mongoose.Types.ObjectId, fullname: String },
-  date: { type: Date, required: true, default: Date.now },
-});
+// const reviewSchema = new Schema({
+//   review: { type: String, required: true },
+//   rating: { type: Number, required: true },
+//   by: { user_id: mongoose.Types.ObjectId, fullname: String, email: String },
+//   date: { type: Date, required: true, default: Date.now },
+// });
 
 // Define the main schema for the real estate model
 const estateSchema = new Schema(
@@ -76,7 +76,19 @@ const estateSchema = new Schema(
       parking: { type: Boolean, default: false },
       furnished: { type: Boolean, default: false },
     },
-    reviews: [reviewSchema],
+    // reviews: [reviewSchema],
+    reviews: [
+      {
+        review: { type: String, required: true },
+        rating: { type: Number, required: true },
+        by: {
+          user_id: mongoose.Types.ObjectId,
+          fullname: String,
+          email: String,
+        },
+        date: { type: Date, required: true, default: Date.now },
+      },
+    ],
     dateAdded: { type: Date, default: Date.now },
     lastUpdated: { type: Date, default: Date.now },
     status: {

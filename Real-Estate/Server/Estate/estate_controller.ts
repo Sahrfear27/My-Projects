@@ -1,7 +1,8 @@
-import { RequestHandler } from "express";
+import e, { RequestHandler } from "express";
 import { StandardResponse } from "../Helper/standardResponse";
 import { Estate, EstateType } from "./estate_model";
 import { ErrorWithStatus } from "../Helper/errorhandler";
+import mongoose, { Types } from "mongoose";
 
 type Image = {
   filename: string;
@@ -264,5 +265,128 @@ export const get_properties_by_listing_type: RequestHandler<
   } catch (error) {
     console.error("Error fetching listings by listing type:", error);
     res.json({ success: false, data: null });
+  }
+};
+
+// Create controller functions to add review and rating to a property
+export const add_review: RequestHandler<
+  { property_id: string },
+  StandardResponse<string>,
+  { review: string; rating: number },
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id } = req.params;
+    const { review, rating } = req.body;
+    const { tokenData } = req;
+    // Update one property with the new review and rating
+    const _id = new Types.ObjectId(); // Generate a new ObjectId for the review
+    const result = await Estate.updateOne(
+      {
+        _id: property_id,
+      },
+      {
+        $addToSet: {
+          reviews: {
+            _id,
+            review,
+            rating,
+            by: {
+              user_id: tokenData._id,
+              fullname: tokenData.fullname,
+            },
+          },
+        },
+      }
+    );
+
+    res.json({
+      success: true,
+      data: result.modifiedCount ? _id.toString() : "",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Create controller functions to get all reviews and ratings for a property
+export const get_reviews: RequestHandler<
+  { property_id: string },
+  StandardResponse<{ reviews: EstateType["reviews"] }>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id } = req.params;
+    const result = await Estate.findOne({ _id: property_id });
+    console.log(result?.reviews);
+    result && res.json({ success: true, data: { reviews: result.reviews } });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get reviews by property id
+export const get_reviews_id: RequestHandler<
+  { property_id: string; review_id: string },
+  StandardResponse<EstateType["reviews"] | {}>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id, review_id } = req.params;
+    const result = await Estate.findOne(
+      { _id: property_id, "reviews._id": review_id },
+      { "reviews.$": 1, _id: 0 }
+    ).lean();
+    if (result) {
+      res.json({
+        success: true,
+        data: result.reviews.length ? result.reviews[0] : {},
+      });
+    } else {
+      res.json({
+        success: false,
+        data: {},
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching reviews by property id:", error);
+    next(error);
+  }
+};
+
+// // Delete review by review id
+export const delete_review_by_id: RequestHandler<
+  { property_id: string; review_id: string },
+  unknown,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id, review_id } = req.params;
+    const {
+      tokenData: { _id: user_id },
+    } = req;
+
+    const result = await Estate.updateOne(
+      {
+        _id: property_id,
+        "reviews._id": review_id,
+        "reviews.by.user_id": user_id,
+      },
+      {
+        $pull: {
+          reviews: { _id: review_id },
+        },
+      }
+    );
+
+    res.json({
+      success: true,
+      data: result.modifiedCount ? true : false,
+    });
+  } catch (error) {
+    next(error);
   }
 };
