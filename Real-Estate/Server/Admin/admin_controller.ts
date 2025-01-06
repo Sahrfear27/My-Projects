@@ -44,6 +44,7 @@ export const approve_reject_estate: RequestHandler<
     const { status } = req.body;
 
     console.log("Request Body", status);
+
     // Validate status
     const validStatus = ["approved", "rejected"];
     if (!validStatus.includes(status)) {

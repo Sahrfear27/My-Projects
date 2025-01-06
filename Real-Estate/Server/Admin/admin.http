@@ -1,4 +1,4 @@
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzczYjc1NDc2ZTg1Y2UyNjcyYzYiLCJmdWxsbmFtZSI6IkFpYWggTWFjYXJ0aHkiLCJlbWFpbCI6ImFpYWhAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzM1NjA1MTk5fQ.D1rFg3UmlnCtxi-q9kjk9usHm5p7D_u_UdPPMqCl-IA
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU3NjA5MDJ9.B3v5xVReA24FU_qRWglrd92arVH2CgFidKzYx52ed5M
 
 
 # Sign In to Get the Token
@@ -6,8 +6,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "aiah@gmail.com",
-    "password": "aiah"
+    "email": "sahrfear@gmail.com",
+    "password": "sahrfear"
 }
 
 ###
@@ -16,7 +16,7 @@ Authorization:Bearer {{authToken}}
 
 
 ### PATCH Request to Update Property Status
-PATCH http://localhost:4007/property/67733a2b75476e85ce2672cb
+PATCH http://localhost:4007/property/6775a142723272166b1824fa
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 

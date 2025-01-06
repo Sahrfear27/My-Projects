@@ -369,6 +369,27 @@ export const delete_review_by_id: RequestHandler<
       tokenData: { _id: user_id },
     } = req;
 
+    // Condition to check if check only review owner can delete review
+    const reviewOwner = await Estate.findOne(
+      {
+        _id: property_id,
+        "reviews._id": review_id,
+        "reviews.by.user_id": user_id,
+      },
+      {
+        "reviews.by.user_id": 1,
+      }
+    );
+    if (!reviewOwner) {
+      res.status(403).json({
+        success: false,
+        data: false,
+      });
+      return;
+    }
+    console.log(reviewOwner);
+    // Update the property by removing the review with the given review_id and the review's by.user_id
+
     const result = await Estate.updateOne(
       {
         _id: property_id,
@@ -377,7 +398,7 @@ export const delete_review_by_id: RequestHandler<
       },
       {
         $pull: {
-          reviews: { _id: review_id },
+          reviews: { _id: review_id, "by.user_id": user_id },
         },
       }
     );

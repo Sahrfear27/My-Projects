@@ -56,15 +56,10 @@ estate_route.post(
   add_review
 );
 
-// Get all reviews for a property
 estate_route.get("/:property_id/reviews", get_reviews);
-
-// Get review by review id
 estate_route.get("/:property_id/reviews/:review_id", get_reviews_id);
-
-// Delete reive by review id
 estate_route.delete(
-  "/:property_id/:review_id",
+  "/:property_id/reviews/:review_id",
   verify_token,
   delete_review_by_id
 );

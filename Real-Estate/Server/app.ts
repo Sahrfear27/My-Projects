@@ -8,7 +8,6 @@ import { connect_db } from "./database_connect";
 import user_Route from "./Users/user_routes";
 import { ErrorWithStatus } from "./Helper/errorhandler";
 import estate_route from "./Estate/estate_routes";
-import { verify_token } from "./Helper/verify_token";
 
 // Init
 const app = express();

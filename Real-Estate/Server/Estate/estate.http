@@ -6,11 +6,21 @@
 @FILENAME =assets/estate3.jpg
 @FILE_MIME_TYPE=image/jpeg
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTcxNjQ2MH0.QuUNa6Jnj40vHUqqaVGTxUp3Gk81sHLwEeajNHN_IOw
-
-
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTc2NjA3MH0.SR4JeGIvTLTDoCglHdprFdK3BYTVE-JovLvUsaRj34A
+@mamiesiaToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTc2NzgxMX0._ZDqO1CWs4X350S1eXfWg8NhattbQAPqcPpm6IvXQGI
+@maryanneToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk5ZDEwMmM1MGFkZDYxYWM0NjciLCJmdWxsbmFtZSI6Ik1hcnlhbm5lIEJpbWUiLCJlbWFpbCI6Im1hcnlhbm5lQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM1NzY2NTQ3fQ.qEUUwJz7NbEsnVtcYnPEvFQ3UkUlH0jEX-dMl0M9A_E
+@sahrfearToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU3NjY1MTV9.FXcCAmHhWt9tSLjt6S0BswasJeIuKF9RwWxnZ-YcvQU
 
 # Sign In to Get the Token
+POST http://localhost:4007/users/signin
+Content-Type: application/json
+
+{
+    "email": "mamiesia@gmail.com",
+    "password": "mamiesia"
+}
+
+###
 POST http://localhost:4007/users/signin
 Content-Type: application/json
 
@@ -24,24 +34,24 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "mamiesia@gmail.com",
-    "password": "mamiesia"
+    "email": "maryanne@gmail.com",
+    "password": "maryanne"
 }
 ###
 
 # Add a New Property
 POST http://localhost:4007/property/add
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{maryanneToken}}
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-San Franscisco Villa
+Fancy Villa
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
-A beautiful villa in the heart of San Franscisco with a beautiful view of the golden gate bridge.
+Million dollar view of the city that you can't resist very fancy Added By Maryanne
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[address]"
 
@@ -73,7 +83,7 @@ Content-Disposition: form-data; name="price"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="propertyType"
 
-house
+apartment
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="listingType"
 
@@ -194,12 +204,21 @@ Authorization:Bearer {{authToken}}
 
 # Add Review
 ###
-POST http://localhost:4007/property/677242b73629b2ba76727b6f/reviews
+POST http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews
 Content-Type: application/json
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{mamiesiaToken}}
 
 {
-    "review": "This review is added by Mamie Sia",
+    "review": "This review is added by Mamie Sia. The owner is Maryanne",
+    "rating": 5
+}
+###
+POST http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews
+Content-Type: application/json
+Authorization: Bearer {{sahrfearToken}}
+
+{
+    "review": "This review is added by Sahrfear. The owner is Maryanne",
     "rating": 5
 }
 
@@ -214,5 +233,5 @@ GET  http://localhost:4007/property/677242b73629b2ba76727b6f/reviews/6774db76a7c
 
 # Delete Review by review id
 ###
-DELETE http://localhost:4007/property/677242b73629b2ba76727b6f/6774eaefcee8670ab0c21e5b
-Authorization: Bearer {{authToken}}
+DELETE http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews/6775b98a7f2e6788fec4265c
+Authorization: Bearer {{sahrfearToken}}
