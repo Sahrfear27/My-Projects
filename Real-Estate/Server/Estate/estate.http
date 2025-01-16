@@ -7,9 +7,9 @@
 @FILE_MIME_TYPE=image/jpeg
 
 @authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTc2NjA3MH0.SR4JeGIvTLTDoCglHdprFdK3BYTVE-JovLvUsaRj34A
-@mamiesiaToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTc2NzgxMX0._ZDqO1CWs4X350S1eXfWg8NhattbQAPqcPpm6IvXQGI
-@maryanneToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk5ZDEwMmM1MGFkZDYxYWM0NjciLCJmdWxsbmFtZSI6Ik1hcnlhbm5lIEJpbWUiLCJlbWFpbCI6Im1hcnlhbm5lQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM1NzY2NTQ3fQ.qEUUwJz7NbEsnVtcYnPEvFQ3UkUlH0jEX-dMl0M9A_E
-@sahrfearToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU3NjY1MTV9.FXcCAmHhWt9tSLjt6S0BswasJeIuKF9RwWxnZ-YcvQU
+@mamiesiaToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNjg2NDc4N30.eaaC3jhm1UnGFPFP1piHIHN40BOG3OhMCX05HYf51II
+@maryanneToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk5ZDEwMmM1MGFkZDYxYWM0NjciLCJmdWxsbmFtZSI6Ik1hcnlhbm5lIEJpbWUiLCJlbWFpbCI6Im1hcnlhbm5lQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM2ODY0ODQ4fQ.x3nh64nYVQMiv4k6WYvTaZxMJoSLnp2kWJj4Lxj1rNY
+@sahrfearToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY4NjQ4MTh9.Q1Bg-OtCu4X_9WYaNowfczQ2fGE2vx7H7l4e5FXhWO0
 
 # Sign In to Get the Token
 POST http://localhost:4007/users/signin
@@ -204,22 +204,22 @@ Authorization:Bearer {{authToken}}
 
 # Add Review
 ###
-POST http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews
+POST http://localhost:4007/property/677242f698fc9bc0d6d6d110/reviews
 Content-Type: application/json
 Authorization: Bearer {{mamiesiaToken}}
 
 {
-    "review": "This review is added by Mamie Sia. The owner is Maryanne",
+    "review": "This review is added by Mamie Sia. The owner is Sahrfear",
     "rating": 5
 }
 ###
-POST http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews
+POST http://localhost:4007/property/677242f698fc9bc0d6d6d110/reviews
 Content-Type: application/json
-Authorization: Bearer {{sahrfearToken}}
+Authorization: Bearer {{maryanneToken}}
 
 {
-    "review": "This review is added by Sahrfear. The owner is Maryanne",
-    "rating": 5
+    "review": "This review is added by Maryanne. The owner is Sahrfear",
+    "rating": 2
 }
 
 
@@ -235,3 +235,14 @@ GET  http://localhost:4007/property/677242b73629b2ba76727b6f/reviews/6774db76a7c
 ###
 DELETE http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews/6775b98a7f2e6788fec4265c
 Authorization: Bearer {{sahrfearToken}}
+
+# Update Review by review id
+###
+PUT http://localhost:4007/property/677242f698fc9bc0d6d6d110/reviews/678677805c3f819cd3b60b2f
+Content-Type: application/json
+Authorization: Bearer {{mamiesiaToken}}
+
+{
+    "review": "This review is updated by MamieSia. The owner is sahrfear",
+    "rating": 1
+}

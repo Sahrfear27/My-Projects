@@ -411,3 +411,50 @@ export const delete_review_by_id: RequestHandler<
     next(error);
   }
 };
+
+// Update review by review id
+export const update_review: RequestHandler<
+  { property_id: string; review_id: string },
+  StandardResponse<number>,
+  { review: string; rating: number },
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { property_id, review_id } = req.params;
+    const { review, rating } = req.body;
+    const {
+      tokenData: { _id: user_id },
+    } = req;
+    const review_details = await Estate.findOne(
+      {
+        _id: property_id,
+        "reviews._id": review_id,
+      },
+      { "reviews.$": 1, _id: 0 }
+    );
+    console.log(review_details?.reviews[0].by?.user_id); //new ObjectId('6773370775476e85ce2672be')
+    console.log(user_id); //6773370775476e85ce2672be
+    const added_by_user_id = review_details?.reviews[0].by?.user_id;
+    // console.log(added_by_user_id!.toString());
+    if (added_by_user_id!.toString() !== user_id) {
+      throw new ErrorWithStatus("Unauthorized access", 403);
+    }
+    const result = await Estate.updateOne(
+      {
+        _id: property_id,
+        "reviews._id": review_id,
+      },
+      {
+        $set: {
+          "reviews.$.review": review,
+          "reviews.$.rating": rating,
+          "reviews.$.lastUpdated": Date.now(),
+        },
+      }
+    );
+    res.json({ success: true, data: result.modifiedCount });
+  } catch (error) {
+    console.error("Error updating review by review id:", error);
+    next(error);
+  }
+};

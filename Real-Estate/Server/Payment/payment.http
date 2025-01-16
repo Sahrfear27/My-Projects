@@ -1,0 +1,20 @@
+### Login to make payment
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNjk2OTI4Nn0.rPLI_c1pPFm3DYo4_tmhivpjNngEHZY3DK1RGB2romY
+
+POST http://localhost:4007/users/signin
+Content-Type: application/json
+
+{
+    "email": "mamiesia@gmail.com",
+    "password": "mamiesia"
+}
+
+### Create Payment
+POST http://localhost:4007/property/677242f698fc9bc0d6d6d110/payment 
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "amount": 5000,
+  "currency": "usd"
+}

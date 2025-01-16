@@ -10,11 +10,13 @@ import {
   get_reviews,
   get_reviews_id,
   delete_review_by_id,
+  update_review,
 } from "./estate_controller";
 import multer from "multer";
 import { verify_token } from "../Helper/verify_token";
 import admin_route from "../Admin/admin_route";
 import { parseBody } from "../Helper/parser";
+import payment_route from "../Payment/payment_route";
 
 const estate_route = express.Router();
 
@@ -63,5 +65,13 @@ estate_route.delete(
   verify_token,
   delete_review_by_id
 );
+// Update Review
+estate_route.put(
+  "/:property_id/reviews/:review_id",
+  verify_token,
+  parseBody(),
+  update_review
+);
 estate_route.use("", admin_route);
+estate_route.use("/:property_id/payment", payment_route);
 export default estate_route;
