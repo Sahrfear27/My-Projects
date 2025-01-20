@@ -4,10 +4,9 @@ POST http://localhost:4007/users/signup
 Content-Type: application/json
 
 {
-    "fullname": "Aiah Macarthy",
-     "email": "aiah@gmail.com",
-    "password": "aiah",
-    "role": "admin"
+    "fullname": "Sia Tia McCarthy",
+     "email": "siatia@gmail.com",
+    "password": "siatia"
 }
 
 # Sign In
@@ -16,8 +15,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "aiah@gmail.com",
-    "password": "aiah"
+    "email": "siatia@gmail.com",
+    "password": "siatia"
 }
 
 ###
@@ -26,9 +25,9 @@ Content-Type: application/json
 @FILE_FORM_NAME=userfile
 # @FILE_MIME_TYPE=assets/jpg
 @FILE_MIME_TYPE=image/jpeg
-@user_id =676d9786fe19125be10cdc31
+@user_id =678debabc91b6051f3d0957a
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzZkOTc4NmZlMTkxMjViZTEwY2RjMzEiLCJmdWxsbmFtZSI6IlNpYSBNYWNhcnRoeSIsImVtYWlsIjoic2lhQGdtYWlsLmNvbSIsImlhdCI6MTczNTIzNTQ3MX0.-fJ38fbwVIkucNeGiZBY7t1oq__54hVx2--eqeRQ4W4
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzhkZWJhYmM5MWI2MDUxZjNkMDk1N2EiLCJmdWxsbmFtZSI6IlNpYSBUaWEgTWNDYXJ0aHkiLCJlbWFpbCI6InNpYXRpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNzM1NDI0NX0.0fzvoGAm71tYG2j7krTPNvcnnkcCW6Q_wYACrQCk7_M
 
 
 ###

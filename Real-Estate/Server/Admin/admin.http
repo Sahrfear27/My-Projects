@@ -1,4 +1,4 @@
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU3NjA5MDJ9.B3v5xVReA24FU_qRWglrd92arVH2CgFidKzYx52ed5M
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzczNTQ4NzN9.76giBIC5Dn6EqXmWaebUHJ6ETnrEaBR2u6Gcq_cPHIA
 
 
 # Sign In to Get the Token
@@ -16,7 +16,7 @@ Authorization:Bearer {{authToken}}
 
 
 ### PATCH Request to Update Property Status
-PATCH http://localhost:4007/property/6775a142723272166b1824fa
+PATCH http://localhost:4007/property/678df398d682e056ac2d2416
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
 

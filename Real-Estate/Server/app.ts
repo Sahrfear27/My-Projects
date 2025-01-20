@@ -1,14 +1,13 @@
 import express, { NextFunction, Request, Response } from "express";
+import { ErrorWithStatus } from "./Helper/errorhandler";
+import { connect_db } from "./database_connect";
+import estate_route from "./Estate/estate_routes";
+import user_Route from "./Users/user_routes";
 import fs from "node:fs";
 import path from "node:path";
 import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
-import { connect_db } from "./database_connect";
-import user_Route from "./Users/user_routes";
-import { ErrorWithStatus } from "./Helper/errorhandler";
-import estate_route from "./Estate/estate_routes";
-import payment_route from "./Payment/payment_route";
 
 // Init
 const app = express();
@@ -17,7 +16,7 @@ connect_db();
 // Config
 app.set("port", 4007);
 
-// midware
+// middware
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 } else {
@@ -34,12 +33,11 @@ app.use(cors());
 app.use("/users", user_Route);
 app.use("/property", estate_route);
 
-// Catch all unhandled requests
+// Error Handle
 app.all("*", (req: Request, res: Response, next: NextFunction) => {
   next(new ErrorWithStatus("Route Not Found", 404));
 });
 
-// Error Handle
 app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof ErrorWithStatus) {
     res.status(err.status).send(err.message);

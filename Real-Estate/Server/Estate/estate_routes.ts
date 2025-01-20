@@ -18,7 +18,7 @@ import admin_route from "../Admin/admin_route";
 import { parseBody } from "../Helper/parser";
 import payment_route from "../Payment/payment_route";
 
-const estate_route = express.Router();
+const estate_route = express.Router({ mergeParams: true });
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -73,5 +73,5 @@ estate_route.put(
   update_review
 );
 estate_route.use("", admin_route);
-estate_route.use("/:property_id/payment", payment_route);
+estate_route.use("/:property_id", payment_route);
 export default estate_route;

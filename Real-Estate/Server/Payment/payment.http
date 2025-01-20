@@ -1,20 +1,49 @@
 ### Login to make payment
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNjk2OTI4Nn0.rPLI_c1pPFm3DYo4_tmhivpjNngEHZY3DK1RGB2romY
-
+@tiaToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzhkZWJhYmM5MWI2MDUxZjNkMDk1N2EiLCJmdWxsbmFtZSI6IlNpYSBUaWEgTWNDYXJ0aHkiLCJlbWFpbCI6InNpYXRpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNzM1NzA3MX0.nCzPJ8jUx-y6NcVcbH3RmrPJ2cKpeOnG9cliyisFK6A
+@maryanneToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk5ZDEwMmM1MGFkZDYxYWM0NjciLCJmdWxsbmFtZSI6Ik1hcnlhbm5lIEJpbWUiLCJlbWFpbCI6Im1hcnlhbm5lQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MzU3MTM5fQ.VtYU2T6qLCMUmjhiIsYF9hX8eBzxku4yn3y8ehADMrg
 POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "mamiesia@gmail.com",
-    "password": "mamiesia"
+    "email": "siatia@gmail.com",
+    "password": "siatia"
 }
-
-### Create Payment
-POST http://localhost:4007/property/677242f698fc9bc0d6d6d110/payment 
+###
+POST http://localhost:4007/users/signin
 Content-Type: application/json
-Authorization: Bearer {{authToken}}
 
 {
-  "amount": 5000,
-  "currency": "usd"
+    "email": "maryanne@gmail.com",
+    "password": "maryanne"
 }
+
+
+### Create Payment
+POST http://localhost:4007/property/678df398d682e056ac2d2416/payment 
+Content-Type: application/json
+Authorization: Bearer {{tiaToken}}
+
+{
+  "amount": 1000,
+  "currency": "usd",
+  "propertyId":"678df398d682e056ac2d2416",
+  "userId":"678debabc91b6051f3d0957a"
+}
+
+###
+POST http://localhost:4007/property/678df15fd682e056ac2d23f3/payment 
+Content-Type: application/json
+Authorization: Bearer {{maryanneToken}}
+
+{
+  "amount": 7000,
+  "currency": "usd",
+  "propertyId":"678df15fd682e056ac2d23f3",
+  "userId":"6772399d102c50add61ac467"
+}
+
+### Get the payment details
+GET http://localhost:4007/property/678df15fd682e056ac2d23f3/payment/678df9330205ee99b8fde371
+Authorization: Bearer {{maryanneToken}}
+
+

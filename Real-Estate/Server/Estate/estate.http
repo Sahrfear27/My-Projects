@@ -8,16 +8,17 @@
 
 @authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNTc2NjA3MH0.SR4JeGIvTLTDoCglHdprFdK3BYTVE-JovLvUsaRj34A
 @mamiesiaToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzczMzcwNzc1NDc2ZTg1Y2UyNjcyYmUiLCJmdWxsbmFtZSI6Ik1hbWllc2lhIE1hY2FydGh5IiwiZW1haWwiOiJtYW1pZXNpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNjg2NDc4N30.eaaC3jhm1UnGFPFP1piHIHN40BOG3OhMCX05HYf51II
-@maryanneToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk5ZDEwMmM1MGFkZDYxYWM0NjciLCJmdWxsbmFtZSI6Ik1hcnlhbm5lIEJpbWUiLCJlbWFpbCI6Im1hcnlhbm5lQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM2ODY0ODQ4fQ.x3nh64nYVQMiv4k6WYvTaZxMJoSLnp2kWJj4Lxj1rNY
+@maryanneToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk5ZDEwMmM1MGFkZDYxYWM0NjciLCJmdWxsbmFtZSI6Ik1hcnlhbm5lIEJpbWUiLCJlbWFpbCI6Im1hcnlhbm5lQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MzU1ODI1fQ.dYRsbrjkHiLvqS5CwWfyT2tf_NzTtDhH4DIZ3mb9-A4
 @sahrfearToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzcyMzk2ZjEwMmM1MGFkZDYxYWM0NjMiLCJmdWxsbmFtZSI6IlNhaHJmZWFyIE1hY2FydGh5IiwiZW1haWwiOiJzYWhyZmVhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY4NjQ4MTh9.Q1Bg-OtCu4X_9WYaNowfczQ2fGE2vx7H7l4e5FXhWO0
+@tiaToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzhkZWJhYmM5MWI2MDUxZjNkMDk1N2EiLCJmdWxsbmFtZSI6IlNpYSBUaWEgTWNDYXJ0aHkiLCJlbWFpbCI6InNpYXRpYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNzM1NDQ3OH0.rbCpJwdfLv33ROxk5NSMYyRSeAHRwOPyr7ppkeTQGFs
 
 # Sign In to Get the Token
 POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "mamiesia@gmail.com",
-    "password": "mamiesia"
+      "email": "siatia@gmail.com",
+    "password": "siatia"
 }
 
 ###
@@ -25,8 +26,8 @@ POST http://localhost:4007/users/signin
 Content-Type: application/json
 
 {
-    "email": "sahrfear@gmail.com",
-    "password": "sahrfear"
+    "email": "maryanne@gmail.com",
+    "password": "maryanne"
 }
 
 ###
@@ -47,23 +48,23 @@ Authorization: Bearer {{maryanneToken}}
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
 
-Fancy Villa
+The Place Resort
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
-Million dollar view of the city that you can't resist very fancy Added By Maryanne
+Imazing Hotel for Kings and Queens
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[address]"
 
-1234 New Tech Drive
+Tokeh
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[city]"
 
-San Franscisco
+Freetown
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[state]"
 
-USA
+Sierra leone
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="location[postalCode]"
 
@@ -83,11 +84,11 @@ Content-Disposition: form-data; name="price"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="propertyType"
 
-apartment
+villa
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="listingType"
 
-rent
+sale
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="status"
 
@@ -99,7 +100,7 @@ Content-Disposition: form-data; name="features[bedrooms]"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[bathrooms]"
 
-10
+3
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="features[area]"
 
@@ -123,15 +124,15 @@ Content-Type: image/jpeg
 
 # Get apartment by id
 ###
-GET  http://localhost:4007/property/676d9899fe19125be10cdc3c
-Authorization:Bearer {{authToken}}
+GET  http://localhost:4007/property/678df15fd682e056ac2d23f3
+Authorization:Bearer {{tiaToken}}
 
 
 # Update Property by id
 ###
-PUT http://localhost:4007/property/676d9dc406490ed7c46a4883
+PUT http://localhost:4007/property/678df15fd682e056ac2d23f3
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
-Authorization: Bearer {{authToken}}
+Authorization: Bearer {{tiaToken}}
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="name"
@@ -186,63 +187,63 @@ townhouse
 
 # Delete Property by id and owner id
 ###
-DELETE http://localhost:4007/property/675b313592a59886d2797b3f
-Authorization: Bearer {{authToken}}
+DELETE http://localhost:4007/property/678df299d682e056ac2d2408
+Authorization: Bearer {{tiaToken}}
 
 
 
 # Get all proptety type
 ###
-GET  http://localhost:4007/property/type/house
-Authorization:Bearer {{authToken}}
+GET  http://localhost:4007/property/type/commercial
+Authorization:Bearer {{tiaToken}}
 
 # Get property by listing type
 ###
 GET  http://localhost:4007/property/listing/type/rent
-Authorization:Bearer {{authToken}}
+Authorization:Bearer {{tiaToken}}
 
 
 # Add Review
 ###
-POST http://localhost:4007/property/677242f698fc9bc0d6d6d110/reviews
+POST http://localhost:4007/property/678df398d682e056ac2d2416/reviews
 Content-Type: application/json
-Authorization: Bearer {{mamiesiaToken}}
+Authorization: Bearer {{tiaToken}}
 
 {
-    "review": "This review is added by Mamie Sia. The owner is Sahrfear",
-    "rating": 5
+    "review": "This review is added by Sia Tia The owner is Maryanne",
+    "rating": 2
 }
 ###
-POST http://localhost:4007/property/677242f698fc9bc0d6d6d110/reviews
+POST http://localhost:4007/property/678df398d682e056ac2d2416/reviews
 Content-Type: application/json
 Authorization: Bearer {{maryanneToken}}
 
 {
-    "review": "This review is added by Maryanne. The owner is Sahrfear",
-    "rating": 2
+    "review": "This review is added by Maryanne. She is the owner of the property",
+    "rating": 5
 }
 
 
 # Get all reviews
 ###
-GET  http://localhost:4007/property/677242b73629b2ba76727b6f/reviews
+GET  http://localhost:4007/property/678df398d682e056ac2d2416/reviews
 
 # Get review by id
 ###
 GET  http://localhost:4007/property/677242b73629b2ba76727b6f/reviews/6774db76a7c617e697d30e85
 
-# Delete Review by review id
+# Delete Review by review id : Rechek to retrun the approprite response
 ###
-DELETE http://localhost:4007/property/6775b2caa4fa810b21151a4b/reviews/6775b98a7f2e6788fec4265c
-Authorization: Bearer {{sahrfearToken}}
+DELETE http://localhost:4007/property/678df398d682e056ac2d2416/reviews/678df48fd682e056ac2d241f
+Authorization: Bearer {{tiaToken}}
 
 # Update Review by review id
 ###
-PUT http://localhost:4007/property/677242f698fc9bc0d6d6d110/reviews/678677805c3f819cd3b60b2f
+PUT http://localhost:4007/property/678df398d682e056ac2d2416/reviews/678df6684ef93aab933ff1f6
 Content-Type: application/json
-Authorization: Bearer {{mamiesiaToken}}
+Authorization: Bearer {{tiaToken}}
 
 {
-    "review": "This review is updated by MamieSia. The owner is sahrfear",
-    "rating": 1
+    "review": "This review is updated by Sia Tia. The owner is Maryanne",
+    "rating": 5
 }

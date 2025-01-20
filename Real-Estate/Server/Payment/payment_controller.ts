@@ -4,6 +4,8 @@ import { StandardResponse } from "../Helper/standardResponse";
 import { PaymentType } from "./payment_model";
 import { Payment } from "./payment_model";
 
+import { ObjectId } from "mongodb";
+
 // Initialize Stripe with secret key
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -14,102 +16,124 @@ export const make_payment: RequestHandler<
   unknown
 > = async (req, res, next) => {
   try {
-    console.log("Here");
-    const { property_id } = req.params;
-    const { tokenData } = req;
+    console.log("Making Payment...");
 
-    const { amount, currency } = req.body;
+    const { property_id } = req.params;
+    console.log(property_id);
+
+    const { amount, currency, propertyId } = req.body;
+    const userId = req.tokenData._id;
+
+    if (!propertyId || !userId || !amount || !currency) {
+      res.status(400).json({ success: false, data: "Invalid User Input" });
+    }
+
     // Create a Payment Intent with Stripe
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
-      currency, // e.g., 'usd'
-      // metadata: {
-      //   userId,
-      // },
+      currency,
+      metadata: {
+        propertyId,
+        userId,
+      },
     });
 
-    // Save the payment details into the database
+    // Prepare the payment object to be stored in the database
     const payment = {
       amount,
       currency,
       paymentIntentId: paymentIntent.id,
-      status: "pending", // Initially set to pending until Stripe confirms
-      propertyId: property_id,
-      userId: tokenData._id,
+      status: "pending",
+      propertyId: new ObjectId(property_id),
+      userId: userId,
     };
-    const newPayment = await Payment.create(payment);
 
-    res.json({ success: true, data: newPayment });
+    // Save the payment details into the database
+    const result = await Payment.create(payment);
+
+    res.json({ success: true, data: result });
   } catch (error) {
     console.error("Error while making payment:", error);
     next(error);
   }
 };
 
-// import { RequestHandler } from "express";
-// import Stripe from "stripe";
-// import { StandardResponse } from "../Helper/standardResponse";
-// import { PaymentType } from "./payment_model";
-// import { Payment } from "./payment_model";
-// import mongoose from "mongoose";
+export const get_payment_detail: RequestHandler<
+  { property_id: string; payment_id: string },
+  StandardResponse<PaymentType[] | null>,
+  unknown,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { payment_id } = req.params;
+    if (!payment_id) {
+      res.status(400).json({ success: false, data: null });
+    }
 
-// // Initialize Stripe with secret key
-// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2020-08-27' });
+    const payment_info = await Payment.find(
+      { _id: payment_id },
+      { amount: 1, currency: 1, status: 1, _id: 0 }
+    );
+    if (!payment_info) {
+      res.status(400).json({ success: false, data: null });
+    }
+    console.log(payment_info);
+    res.json({ success: true, data: payment_info });
+  } catch (error) {
+    console.log(
+      "Error occurs while trying to retrive payment information",
+      error
+    );
+  }
+};
 
-// export const make_payment: RequestHandler<
-//   { property_id: string },
-//   StandardResponse<PaymentType>,
-//   PaymentType,
-//   unknown
-// > = async (req, res, next) => {
-//   try {
-//     console.log("Making Payment...");
+/**
+ Post-Payment Logic:
+Define logic to execute actions like updating property status or sending a confirmation email 
+after a payment is completed.
+ * */
+// Confirm Payment and Post-Payment Logic
+export const confirm_payment: RequestHandler<
+  unknown,
+  unknown,
+  PaymentType,
+  unknown
+> = async (req, res, next) => {
+  try {
+    const { paymentIntentId } = req.body;
 
-//     // Extract the property_id from request parameters and other payment details from request body
-//     const { property_id } = req.params;  // This is the property ID from the URL
-//     const { tokenData } = req;  // Assuming tokenData contains the authenticated user's info
-//     const { amount, currency, propertyId, userId } = req.body;
+    if (!paymentIntentId) {
+      res
+        .status(400)
+        .json({ success: false, data: "Payment Intent ID is required" });
+    }
 
-//     // Log the request body for debugging purposes
-//     console.log("Request body:", req.body);
+    // Retrieve the Payment Intent from Stripe
+    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
-//     // Validate the propertyId and userId from the body are not undefined
-//     if (!propertyId || !userId) {
-//       return res.status(400).json({ success: false, message: "propertyId and userId are required." });
-//     }
+    if (paymentIntent.status !== "succeeded") {
+      res.status(400).json({ success: false, data: "Payment not completed" });
+    }
 
-//     // The property_id from params should be used to associate with the payment, overriding propertyId from the body
-//     if (property_id !== propertyId) {
-//       return res.status(400).json({ success: false, message: "Property ID mismatch." });
-//     }
+    // Update Payment Status in Database
+    const payment = await Payment.findOneAndUpdate(
+      { paymentIntentId },
+      // { status: "succeeded", transactionId: paymentIntent.charges.data[0].id },
+      { new: true }
+    );
 
-//     // Create a Payment Intent with Stripe
-//     const paymentIntent = await stripe.paymentIntents.create({
-//       amount,
-//       currency, // e.g., 'usd'
-//       metadata: {
-//         propertyId: property_id, // Using the property_id from the URL params
-//         userId,
-//       },
-//     });
+    if (!payment) {
+      res.status(404).json({ success: false, data: "Payment not found" });
+    }
 
-//     // Prepare the payment object to be stored in the database
-//     const payment = {
-//       amount,
-//       currency,
-//       paymentIntentId: paymentIntent.id,
-//       status: "pending", // Initially set to pending until Stripe confirms
-//       propertyId: mongoose.Types.ObjectId(property_id), // Ensure it's an ObjectId
-//       userId: mongoose.Types.ObjectId(userId), // Ensure it's an ObjectId
-//     };
+    // Post-Payment Logic (e.g., Update Estate Status)
+    // await Estate.findByIdAndUpdate(payment.propertyId, { availability: false });
 
-//     // Save the payment details into the database
-//     const newPayment = await Payment.create(payment);
-
-//     // Respond with the created payment object
-//     res.json({ success: true, data: newPayment });
-//   } catch (error) {
-//     console.error("Error while making payment:", error);
-//     next(error);
-//   }
-// };
+    res
+      .status(200)
+      .json({ success: true, message: "Payment confirmed", data: payment });
+  } catch (error) {
+    console.error("Error confirming payment:", error);
+    next(error);
+  }
+};
