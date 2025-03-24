@@ -15,15 +15,13 @@ This project is a web application designed to help users review and report medic
 - **Toasta** – Small pop-up notifications for better user experience
 - **Encapsulation** – Avoiding style conflicts within components
 - **Pipes & Directives** – Custom functionality to transform data in templates
-- **NodeMailer** – Email service for notifications and alerts
 
 ## Backend (Node.js + Express.js)
 
-- **Express.ts** – Server-side framework for handling API requests
+- **Express** – Server-side framework for handling API requests
 - **MongoDB** – NoSQL database for flexible data storage
 - **Controllers & Routers** – Organized backend structure for clean API management
 - **JWT** – SON Web Tokens for secure authentication and authorization
-- **Stripe** – Integrated payment gateway for transaction handling
 
 ## 🌟 Features
 
