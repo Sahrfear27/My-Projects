@@ -104,7 +104,7 @@ This project is a web application designed to help users review and report medic
 
 ## 1️⃣ Clone the Repository
 
-git clone https://github.com/Sahrfear27/My-Projects/tree/main/Real-Estate
+git clone https://github.com/Sahrfear27/My-Projects/tree/main/Drug-App
 
 ## 2️⃣ Install Dependencies
 
