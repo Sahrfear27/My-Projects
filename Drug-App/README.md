@@ -1,4 +1,4 @@
-# 🚀 Medication Reviews/Side-Effects Application
+# 🚀 Drug App
 
 This project is a web application designed to help users review and report medication side effects. It features guest browsing, user authentication, and role-based permissions for managing medications and reviews.
 
