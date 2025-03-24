@@ -1,7 +1,6 @@
 import { AuthorizationServiceService } from './Services/authorization-service.service';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
