@@ -25,7 +25,7 @@ This project is a web application designed to help users review and report medic
 
 ## 🌟 Features
 
-✅ Access Log – Track incoming and outgoing requests for better monitoring
+✅ OOP - Utilize Object Oriented programming principle such Encapsulation that minimize style conflict within the application
 
 ✅ Guest Browsing - Browse Medications by First Letter: Guests can view medications by selecting an alphabet letter.
 
