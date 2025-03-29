@@ -44,7 +44,7 @@ This project is a web application designed to help users review and report medic
 # 📂 Project Structure
 
 ```plaintext
-/REAL-ESTATE
+/Drug App
 ├── /client (Frontend - Angular)
 │   ├── /.vscode
 │   ├── /dist

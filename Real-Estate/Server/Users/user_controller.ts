@@ -33,30 +33,6 @@ export const sign_up: RequestHandler<
     }
     res.json({ success: true, data: userCreated });
     console.log("User Successfully Created");
-
-    // // Check if email already exists in the database
-    // const existingUser = await userModel.findOne({ email });
-    // if (existingUser) {
-    //   throw new Error("Email already exists");
-    // }
-
-    // // Hash the password
-    // const hashpassword = await hash(req.body.password, 10);
-
-    // // Create the new user
-    // const userCreated = await userModel.create({
-    //   fullname: fullname,
-    //   email: email,
-    //   password: hashpassword,
-
-    // });
-
-    // if (!userCreated) {
-    //   console.log("user cannot be created");
-    // } else {
-    //   res.json({ success: true, data: userCreated });
-    //   console.log("User has been created to the database");
-    // }
   } catch (error) {
     console.log("User cannot be created", error);
     next(error);
